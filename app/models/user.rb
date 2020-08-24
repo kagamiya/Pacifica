@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  mount_uploader :picture, PictureUploader
+
   attr_accessor :remember_token
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -11,6 +13,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate :picture_size
 
   # return hash value for the passed character string
   def User.digest(string)
@@ -40,4 +43,17 @@ class User < ApplicationRecord
   def forget_token
     update_attribute(:remember_digest, nil)
   end
+
+  # trial feed
+  def feed
+    Post.where("user_id=?", id)
+  end
+
+  private
+
+    def picture_size
+      if picture.size > 5.megabytes
+        error.add(:picture, "should be less than 5MB")
+      end
+    end
 end

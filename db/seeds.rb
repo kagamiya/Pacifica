@@ -1,3 +1,4 @@
+# sample users
 User.create!(name:  "kagamiya",
              email: "kagamiya@example.com",
              password:              "foobar",
@@ -12,4 +13,11 @@ User.create!(name:  "kagamiya",
                email: email,
                password:              password,
                password_confirmation: password)
+end
+
+# sample posts associated with users
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.posts.create!(content: content) }
 end

@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use faker for example users/posts
 gem 'faker', '1.7.3'
+# Use carrierwave to upload image files
+gem 'carrierwave', '1.2.2'
+# Use mini_magick to resize image files
+gem 'mini_magick', '4.7.0'
 # Use willpaginate for users/posts index
 gem 'will_paginate'          
 gem 'bootstrap-will_paginate', '1.0.0'
@@ -72,6 +76,8 @@ group :test do
 end
 
 group :production do
+  # Use fog to upload image files
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
