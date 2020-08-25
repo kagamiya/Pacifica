@@ -14,9 +14,12 @@
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+
+  <% if logged_in? %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
+  <% end %>
 <% end %>
 
 <script type="text/javascript">

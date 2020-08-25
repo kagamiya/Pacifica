@@ -1,5 +1,5 @@
 <li id="post-<%= post.id %>">
-  <%= image_tag 'sample_artwork.png', class: "user_icon" %>
+  <%= icon_for(post.user) %>
   <span class="user"><%= link_to post.user.name, post.user %></span>
   <span class="content"><%= post.content %></span>
   <span class="timestamp">
