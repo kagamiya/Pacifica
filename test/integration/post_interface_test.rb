@@ -8,8 +8,8 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
 
   test "post interface" do
     log_in_as(@user)
-    get root_path
-    assert_select 'div.pagination'
+    get new_post_path
+    assert_template 'posts/new'
     # invalid post
     assert_no_difference 'Post.count' do
       post posts_path, params: { post: { content: "" } }

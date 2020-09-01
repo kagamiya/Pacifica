@@ -6,8 +6,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:orange)
   end
 
+  test "should redirect show when not logged in" do
+    get post_path(@post)
+    assert_redirected_to login_url
+  end
+
   test "should redirect new when not logged in" do
     get new_post_path
+    assert_redirected_to login_url
   end
 
   test "should redirect create when not logged in" do

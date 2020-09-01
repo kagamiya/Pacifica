@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = current_user.posts.build
   end
 
   def create
@@ -15,20 +16,20 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/home'
+      render 'posts/new'
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy
     @post.destroy
     flash[:success] = "Post deleted"
     redirect_to request.referrer || root_url
+  end
+  
+  def edit
+  end
+
+  def update
   end
 
   private
