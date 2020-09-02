@@ -1,4 +1,3 @@
-<h1><%= yield(:form_name) %></h1>
 <%= form_for(@post, url: yield(:url)) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
