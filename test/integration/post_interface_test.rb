@@ -37,5 +37,6 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     # access wrong user profile (and confirm delete links are not there)
     get user_path(users(:archer))
     assert_select 'a', text: "delete", count: 0
+    assert_select 'a', text: "edit", count: 0
   end
 end
