@@ -53,4 +53,12 @@ class FollowingTest < ActionDispatch::IntegrationTest
       delete relationship_path(relationship), xhr: true
     end
   end
+
+  test "Feed on Home page" do
+    get root_path
+    @user.feed.paginate(page: 1).each do |post|
+      assert_match CGI.escapeHTML(post.content), response.body
+      assert_select 'a[href=?]', post_path(post)
+    end
+  end
 end

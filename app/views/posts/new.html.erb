@@ -1,0 +1,10 @@
+<% provide(:title, "New post") %>
+<% provide(:url, posts_path) %>
+<% provide(:placeholder, "Compose new post") %>
+<% provide(:button_text, "Post") %>
+<div class="row">
+  <div class="post_form">
+    <h1>New post</h1>
+    <%= render 'post_form' %>
+  </div>
+</div>

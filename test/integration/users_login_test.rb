@@ -30,6 +30,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path
     assert_select "a[href=?]", user_path(@user)
     assert_select "a[href=?]", edit_user_path(@user)
+    assert_select "a[href=?]", new_post_path
 
     # log out
     delete logout_path
