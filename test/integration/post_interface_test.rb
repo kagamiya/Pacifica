@@ -23,11 +23,13 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
     follow_redirect!
-    assert_match content, response.body
+    assert_match content, response.body # valid post is showed at home feed
+    first_post = @user.posts.paginate(page: 1).first
+    get post_path(first_post)
+    assert_match content, response.body # valid post is showed at posts show
 
     # delete post
     assert_select 'a', text: "delete"
-    first_post = @user.posts.paginate(page: 1).first
     assert_difference 'Post.count', -1 do
       delete post_path(first_post)
     end
