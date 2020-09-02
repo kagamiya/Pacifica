@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_132206) do
+ActiveRecord::Schema.define(version: 2020_09_02_062108) do
+
+  create_table "musics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "artist"
+    t.string "artwork"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_musics_on_post_id"
+  end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -43,5 +53,6 @@ ActiveRecord::Schema.define(version: 2020_08_26_132206) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "musics", "posts"
   add_foreign_key "posts", "users"
 end
