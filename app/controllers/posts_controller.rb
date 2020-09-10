@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
+    @post.build_music
   end
 
   def create
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, music_attributes: [:id, :name, :artist, :artwork, :collection_id])
     end
 
     # authorize correct user to access specific actions

@@ -1,10 +1,27 @@
 <% provide(:title, "New post") %>
-<% provide(:url, posts_path) %>
+<% provide(:url, posts_new_path) %>
 <% provide(:placeholder, "Compose new post") %>
 <% provide(:button_text, "Post") %>
+
 <div class="row">
+  
   <div class="post_form">
     <h1>New post</h1>
-    <%= render 'post_form' %>
+    <!-- <%= render 'post_form' %> -->
+    <%= form_for(@post, url: yield(:url)) do |f| %>
+      <div class="music_form">
+        <%= f.fields_for :music do |m| %>
+          <%= m.label :name %>
+          <%= m.text_field :name %>
+          <span id="name"          class="field"></span>
+          <span id="artist"        class="field"></span>
+          <span id="artwork"       class="field"></span>
+          <span id="collection_id" class="field"></span>
+        <% end %>
+      </div>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.text_area :content, placeholder: yield(:placeholder) %>
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
