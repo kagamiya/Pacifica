@@ -4,8 +4,7 @@ class MusicTest < ActiveSupport::TestCase
 
   def setup
     @post = posts(:orange)
-    @music = @post.build_music(name: "Harlequin")
-    # , artist: "Lee ritenour", artwork: "harlequin_artwork", collection_id: "12345")
+    @music = @post.build_music(name: "Harlequin", artist: "Lee ritenour", artwork: "harlequin_artwork", collection_id: "12345")
   end
 
   test "should be valid" do
@@ -17,18 +16,18 @@ class MusicTest < ActiveSupport::TestCase
     assert_not @music.valid?
   end
 
-  # test "artist should be present" do
-  #   @music.artist = ""
-  #   assert_not @music.valid?
-  # end
+  test "artist should be present" do
+    @music.artist = ""
+    assert_not @music.valid?
+  end
 
-  # test "artwork should be present" do
-  #   @music.artwork = ""
-  #   assert_not @music.valid?
-  # end
+  test "artwork should be present" do
+    @music.artwork = ""
+    assert_not @music.valid?
+  end
 
-  # test "collection id should be present" do
-  #   @music.collection_id = ""
-  #   assert_not @music.valid?
-  # end
+  test "collection id should be present" do
+    @music.collection_id = ""
+    assert_not @music.valid?
+  end
 end

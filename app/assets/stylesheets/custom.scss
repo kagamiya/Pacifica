@@ -283,3 +283,30 @@ span.picture {
     border: 0;
   }
 }
+
+/* Music serch form */
+
+.search-results {
+  #results {
+    width: auto;
+    height:300px;
+    overflow: auto;
+    margin-bottom: 10px;
+    background: #333;
+    color:#eee;
+  }
+  .result_item {
+    overflow: hidden;
+    padding: 5px;
+    margin: 5px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+  }
+  .result_artwork {
+    float: left;
+    margin-right: 10px;
+  }
+  .show-player {
+    float: left;
+  }
+}

@@ -53,7 +53,10 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     # invalid post without music data
     assert_no_difference ['Post.count', 'Music.count'] do
       post posts_path, params: { post: { content: content,
-                                         music_attributes: { name: "" } } }
+                                         music_attributes: { name: "",
+                                                             artist: "",
+                                                             artwork: "",
+                                                             collection_id: "" } } }
     end
     assert_select 'div#error_explanation'
     post = @user.posts.paginate(page: 1).first
@@ -63,7 +66,10 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
     # valid post with music data
     assert_difference ['Post.count', 'Music.count'], 1 do
       post posts_path, params: { post: { content: content,
-                                         music_attributes: { name: name } } }
+                                         music_attributes: { name: name,
+                                                             artist: artist,
+                                                             artwork: artwork,
+                                                             collection_id: collection_id } } }
     end
     post = @user.posts.paginate(page: 1).first
     assert_equal content, post.content
