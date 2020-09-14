@@ -1,14 +1,16 @@
-<li id="post-<%= post.id %>">
+<li class="post-<%= post.id %> post">
   <%= icon_for(post.user) %>
   <span class="user"><%= link_to post.user.name, post.user %></span>
-  <a href="<%= post_path(post) %>">
-    <span class="content"><%= post.content %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
-      <% if current_user?(post.user) %>
-        <%= link_to "edit", edit_post_path(post) %>
-        <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
-      <% end %>
-    </span>
+  <a href="<%= post_path(post) %>", class="heading">
+    <span><%= post.music.name %></span>
+    <span><%= post.music.artist %></span>
+    <%= image_tag post.music.artwork %>
   </a>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <% if current_user?(post.user) %>
+      <%= link_to "edit", edit_post_path(post) %>
+      <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
 </li>

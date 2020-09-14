@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use faker for example users/posts
-gem 'faker', '1.7.3'
+gem 'faker', '2.13.0'
+gem 'rubocop-faker'
 # Use carrierwave to upload image files
 gem 'carrierwave', '1.2.2'
 # Use mini_magick to resize image files
