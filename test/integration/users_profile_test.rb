@@ -19,7 +19,8 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_match @user.posts.count.to_s, response.body
     assert_select 'div.pagination', count: 1
     @user.posts.paginate(page:1).each do |post|
-      assert_match post.content, response.body
+      assert_select 'a[href=?]', post_path(post)
+      assert_select 'span', post.music.name
     end
   end
 end
