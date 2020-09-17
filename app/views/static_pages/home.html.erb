@@ -15,11 +15,13 @@
     </div>
   </div>
 <% else %>
-  <div class="home_wrapper jumbotron">
-    <h1>Pacifica</h1>
-    <h2>Best music and your feel</h2>
+  <% provide(:page_wrapper, "home_wrapper") %>
+  <div class="row">
+    <h1>Well, It's Time</h1>
+    <p>Get in the pacific ocean of the greatest Musics</p>
+    
     <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
     <p>or</p>
-    <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>
   </div>
 <% end %>
