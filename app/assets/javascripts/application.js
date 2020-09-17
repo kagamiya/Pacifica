@@ -152,7 +152,7 @@ $(function() {
   $('#results').mCustomScrollbar();
 
   // back-to-top button
-  $('#back-to-top').click(function() {
+  $('#back_to_top').click(function() {
     $('html, body').animate({ 'scrollTop': 0 }, 'slow');
   });
 

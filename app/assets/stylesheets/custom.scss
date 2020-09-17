@@ -166,28 +166,44 @@ header {
 /* footer */
 
 footer {
+  background-color: #333333;
+  height: auto;
+  width: 100%;
   margin-top: 45px;
   padding-top: 5px;
+  padding-bottom: 10px;
   border-top: 1px solid $gray;
   color: $light-gray;
-  a {
-    color: $gray;
+}
+
+.footer_top {
+  margin-top: 10px;
+  font-family: 'Moon';
+  text-align: center;
+  .back_to_top {
+    font-size: 18px;
+    color: #808080;
+    cursor: pointer;
     &:hover {
-      color: $dark-gray;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
+      color: $light-gray;
     }
   }
 }
+
+.footer_bottom {
+  margin-top: 15px;
+  a {
+    font-family: 'MANIFESTO';
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+  }
+  p {
+    color: $dark-gray;
+    font-size: 10px;
+  }
+}
+
 
 /* sidebar */
 
