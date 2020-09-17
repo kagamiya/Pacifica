@@ -10,6 +10,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
+      # password forms are not there on edit
+      assert_select 'input[type=?]', "password", count: 0
     patch user_path(@user), params: { user: { name: "",
                                               email: "foo@invalid",
                                               password: "foo",
@@ -25,6 +27,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_user_url(@user)
     assert session[:forwarding_url].nil?
+
     name = "foo bar"
     email = "foo@bar.com"
     # upload picture for user icon

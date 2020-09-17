@@ -43,6 +43,10 @@ textarea {
   @include box_sizing;
 }
 
+.alert {
+  margin-top: 10px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,9 +54,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -335,6 +336,28 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/* User forms signup/login/edit */
+
+.user_form_wrapper {
+  background-image: url('bg4.jpeg');
+  background-size: cover;
+}
+
+.user_form {
+  margin-top: 20px;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 5px;
+  background-color: #fdfdfd;
+  h1 {
+    margin: 10px 0;
+    font-size: 32px;
+  }
+  p {
+    margin-top: 5px;
+  }
 }
 
 /* Users index */
