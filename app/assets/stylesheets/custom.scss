@@ -7,6 +7,13 @@
   box-sizing:         border-box;
 }
 
+/* colors */
+
+$gray : #808080;
+$light-gray: #d3d3d3;
+$dark-gray: #9a9a9a;
+$white-smoke: #f5f5f5;
+
 /* universal */
 
 body {
@@ -19,13 +26,6 @@ section {
 
 textarea {
   resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
 }
 
 /* miscellaneous */
@@ -57,7 +57,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: $light-gray;
 }
 
 p {
@@ -65,20 +65,101 @@ p {
   line-height: 1.7em;
 }
 
+/* fonts */
+
+@font-face {
+  font-family: 'MANIFESTO';
+  src: font-url('MANIFESTO.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* header */
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #202020;
+}
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  padding-top: 7px;
+  font-family: 'MANIFESTO';
   color: white;
-  text-transform: uppercase;
+  font-size: 30px;
   letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+  text-transform: uppercase;
   &:hover {
     color: white;
     text-decoration: none;
+  }
+}
+
+@mixin header_item {
+  float: left;
+  display: inline-block;
+  padding-right: 15px;
+  line-height: 50px;
+  font-family: 'Moon';
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: $gray;
+  text-decoration: none;
+  &:hover {
+    color: $light-gray;
+    text-decoration: none;
+  }
+}
+
+.header_right {
+  float: right;
+}
+
+.header_item {
+  @include header_item;
+  .user_icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 10px 0;
+    margin-right: 10px;
+  }
+  i {
+    padding-right: 5px;
+  }
+}
+
+.account_menu {
+  @include header_item;
+  &:focus {
+    color: $light-gray;
+    text-decoration: none;
+  }
+}
+
+.account_items {
+  // background-color: #202020;
+  .user_name {
+    color: #333;
+    &:hover {
+      color: black;
+    }
+  }
+  .user_icon {
+    height: 50px;
+    width: 50px;
+    margin: 0 10px 5px 10px;
   }
 }
 
@@ -88,11 +169,11 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray;
-  color: $gray-light;
+  color: $light-gray;
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      color: $dark-gray;
     }
   }
   small {
@@ -150,7 +231,7 @@ aside {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
+    border-left: 1px solid $white-smoke;
     color: gray;
     &:first-child {
       padding-left: 0;
@@ -205,7 +286,7 @@ input {
 .field_with_errors {
   @extend .has-error;
   .form-control {
-    color: $state-danger-text;
+    color: red;
   }
 }
 
@@ -231,7 +312,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $white-smoke;
   }
 }
 
@@ -257,7 +338,7 @@ input {
     }
   }
   .timestamp {
-    color: $gray-light;
+    color: $light-gray;
     display: block;
     margin-left: 60px;
   }
@@ -281,5 +362,32 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* Music serch form */
+
+.search-results {
+  #results {
+    width: auto;
+    height:300px;
+    overflow: auto;
+    margin-bottom: 10px;
+    background: #333;
+    color:#eee;
+  }
+  .result_item {
+    overflow: hidden;
+    padding: 5px;
+    margin: 5px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+  }
+  .result_artwork {
+    float: left;
+    margin-right: 10px;
+  }
+  .show-player {
+    float: left;
   }
 }
