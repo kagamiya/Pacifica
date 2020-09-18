@@ -9,10 +9,11 @@
 
 /* colors */
 
+$dark-gray: #333;
 $gray : #808080;
+$lighter-gray: #9a9a9a;
 $light-gray: #d3d3d3;
-$dark-gray: #9a9a9a;
-$white-smoke: #f5f5f5;
+$white-smoke: #fdfdfd;
 
 /* universal */
 
@@ -157,7 +158,7 @@ header {
 
 .account_items {
   .user_name {
-    color: #333;
+    color: $dark-gray;
     &:hover {
       color: black;
     }
@@ -165,7 +166,8 @@ header {
   .user_icon {
     height: 50px;
     width: 50px;
-    margin: 0 10px 5px 10px;
+    margin: 0;
+    margin-left: 10px;
   }
 }
 
@@ -204,7 +206,7 @@ footer {
     text-decoration: none;
   }
   p {
-    color: $dark-gray;
+    color: $lighter-gray;
     font-size: 10px;
   }
 }
@@ -223,77 +225,71 @@ footer {
   }
 }
 
+.main_wrapper {
+  background-image: url('bg5.jpeg');
+  background-size: contain;
+}
+
 /* sidebar */
 
 aside {
-  section.user_info {
-    margin-top: 20px;
+  margin-top: 15px;
+  padding-top: 15px;
+  div {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: $white-smoke;
   }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
+  .user_info {
+    // position: relative;
+    padding-bottom: 8px;
+    .user_icon {
+      float: left;
+      // margin-right: 10px;
+      height: 80px;
+      width:  80px;
+      border-radius: 50%;
     }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
+    div {
+      float: left;
+      padding-top: 15px;
+      font-size: 20px;
+      color: $dark-gray;
+      a {
+        color: $dark-gray;
+        text-decoration: none;
+      }
+      p {
+        font-size: 14px;
+      }
     }
   }
 }
 
-.user_icon {
-  height: 80px;
-  width: 80px;
-  float: left;
-  margin-right: 10px;
+.user_profile {
+  p {
+    margin-bottom: 8px;
+  }
 }
 
 .stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
+  margin-bottom: 8px;
   a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $white-smoke;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
+    margin-right: 8px;
   }
-  strong {
-    display: block;
+  .stat {
+    font-size: 16px;
+    color: $dark-gray;
+  }
+  span {
+    color: $gray;
   }
 }
 
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
+.home {
+  .user_profile, .edit_link {
+    display: none;
   }
-  a {
-    padding: 0;
-  }
-}
-
-.users.follow {
-  padding: 0;
 }
 
 /* forms */
@@ -350,7 +346,7 @@ input {
   padding: 20px;
   padding-bottom: 40px;
   border-radius: 5px;
-  background-color: #fdfdfd;
+  background-color: $white-smoke;
   h1 {
     margin: 10px 0;
     font-size: 32px;
@@ -407,13 +403,6 @@ input {
   }
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
 span.picture {
   margin-top: 10px;
   input {
@@ -429,7 +418,7 @@ span.picture {
     height:300px;
     overflow: auto;
     margin-bottom: 10px;
-    background: #333;
+    background: $dark-gray;
     color:#eee;
   }
   .result_item {

@@ -1,5 +1,8 @@
-<h1>
-  <%= icon_for(object) %>
+<%= icon_for(object) %>
+<div>
   <%= link_to object.name, object %>
-</h1>
-<span><%= pluralize(object.posts.count, "post") %></span>
+  <p>Sharing <%= pluralize(object.posts.count, "album") %></p>
+  <% unless @user.nil? %>
+    <%= render 'follow_form' if logged_in? %>
+  <% end %>
+</div>

@@ -1,13 +1,7 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info', object: current_user %>
-      </section>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
+  <% provide(:page_wrapper, "main_wrapper") %>
+  <div class="row home">
+    <%= render 'shared/aside_user_info', object: current_user %>
 
     <div class="col-md-8">
       <h3>Post Feed</h3>

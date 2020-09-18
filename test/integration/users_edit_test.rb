@@ -12,6 +12,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template 'users/edit'
       # password forms are not there on edit
       assert_select 'input[type=?]', "password", count: 0
+      # picture form for user icon is there
+      assert_select 'input[type=?]', "file"
+
     patch user_path(@user), params: { user: { name: "",
                                               email: "foo@invalid",
                                               password: "foo",
