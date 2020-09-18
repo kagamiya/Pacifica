@@ -1,15 +1,17 @@
 <% provide(:title, @title) %>
-<% provide(:page_wrapper, "main_wrapper") %>
+<% provide(:page_wrapper, "users_wrapper") %>
 <div class="row">
   <%= render 'shared/aside_user_info', object: @user %>
 
   <div class="col-md-8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
-    <% end %>
+    <div class="users_index">
+      <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <ul class="users follow">
+          <%= render @users %>
+        </ul>
+        <%= will_paginate %>
+      <% end %>
+    </div>
   </div>
 </div>
