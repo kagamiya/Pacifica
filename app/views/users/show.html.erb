@@ -5,11 +5,12 @@
 
   <div class="col-md-8">
     <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
+    <div class="posts_feed">
       <ol class="posts">
         <%= render @posts %>
       </ol>
       <%= will_paginate @posts %>
+    </div>
     <% end %>
   </div>
 </div>

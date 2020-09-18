@@ -58,7 +58,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
     get root_path
     @user.feed.paginate(page: 1).each do |post|
       assert_select 'a[href=?]', post_path(post)
-      assert_select 'span',      post.music.name
+      assert_select 'a[href=?]', user_path(@user)
     end
   end
 end

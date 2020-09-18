@@ -20,7 +20,6 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination', count: 1
     @user.posts.paginate(page:1).each do |post|
       assert_select 'a[href=?]', post_path(post)
-      assert_select 'span', post.music.name
     end
   end
 end
