@@ -58,22 +58,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $light-gray;
-}
-
 p {
-  font-size: 1.1em;
+  font-size: 16px;
   line-height: 1.7em;
+}
+
+a {
+  cursor: pointer;
 }
 
 /* fonts */
@@ -103,19 +94,25 @@ $bg6: url('bg6.jpeg');
 $bg7: url('bg7.jpeg');
 $bg8: url('bg8.jpeg');
 
+@mixin bg_img($bg, $size) {
+  background-image: $bg;
+  background-size: $size;
+}
+
 .home_wrapper, .user_form_wrapper {
-  background-image: $bg4;
-  background-size: cover;
+  @include bg_img($bg4, cover);
 }
 
 .main_wrapper {
-  background-image: $bg5;
-  background-size: contain;
+  @include bg_img($bg5, contain);
 }
 
 .users_wrapper {
-  background-image: $bg1;
-  background-size: cover;
+  @include bg_img($bg1, contain);
+}
+
+.post_show_wrapper {
+  @include bg_img($bg8, cover);
 }
 
 /* header */
@@ -375,11 +372,41 @@ input {
 
 /* Users index */
 
-.users_index {
+@mixin index_bg {
   margin: 30px 0 15px 0;
   padding: 0 15px;
   background-color: $white-smoke;
   border-radius: 5px;
+}
+
+@mixin index($icon_size, $user_font_size) {
+  list-style: none;
+  padding: 0;
+  li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    .user_icon {
+      float: left;
+      height: $icon_size;
+      width:  $icon_size;
+      border-radius: 50%;
+      margin-right: 10px;
+      margin-top:    5px;
+    }
+    .user {
+      display: block;
+      margin-top: 8px;
+      color: $dark-gray;
+      font-size: $user_font_size;
+      text-decoration: none;
+    }
+    @content;
+  }
+}
+
+.users_index {
+  @include index_bg;
   h1 {
     text-align: left;
     margin: 0;
@@ -393,26 +420,7 @@ input {
 }
 
 .users {
-  list-style: none;
-  padding: 0;
-  li {
-    overflow: hidden;
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-    .user_icon {
-      float: left;
-      height: 80px;
-      width:  80px;
-      border-radius: 50%;
-      margin-right: 10px;
-      margin-top:    5px;
-    }
-    .user {
-      display: block;
-      margin-top: 8px;
-      font-size: 20px;
-      color: $dark-gray;
-    }
+  @include index(80px, 20px) {
     .user_profile {
       font-size: 14px;
       margin-bottom: 5px;
@@ -420,39 +428,14 @@ input {
   }
 }
 
-/* Users follow */
-
 /* posts */
 
 .posts_feed {
-  margin: 30px 0 15px 0;
-  padding: 0 15px;
-  background-color: $white-smoke;
-  border-radius: 5px;
+  @include index_bg;
 }
 
 .posts {
-  list-style: none;
-  padding: 0;
-  li {
-    overflow: hidden;
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-    .user_icon {
-      float: left;
-      height: 50px;
-      width:  50px;
-      border-radius: 50%;
-      margin-right: 10px;
-      margin-top:    5px;
-    }
-    .user {
-      display: block;
-      margin-top: 8px;
-      font-size: 15px;
-      color: $dark-gray;
-      text-decoration: none;
-    }
+  @include index(50px, 15px) {
     img {
       float: right;
     }
@@ -469,14 +452,36 @@ input {
       color: $gray;
       display: block;
       margin-left: 60px;
-    }
+    } 
   }
 }
 
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
+/* post show */
+
+.post_show {
+  @include index_bg;
+  .heading {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    h2 {
+      padding-bottom: 10px;
+    }
+  }
+  .content {
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 18px;
+  }
+  img {
+    height: 120px;
+    width: 120px;
+    margin-top: 20px;
+  }
+  .timestamp {
+    margin-bottom: 15px;
+    color: $gray;
+    text-align: right;
   }
 }
 

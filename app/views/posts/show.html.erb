@@ -1,25 +1,29 @@
+<% provide(:page_wrapper, "post_show_wrapper") %>
 <div class="row">
-  <div class="post-<%= @post.id %>" class="col-md-8">
-    <div class="post_user_info">
-      <%= link_to icon_for(@post.user), @post.user %>
-      <%= link_to @post.user.name,      @post.user %>
-    </div>
-    
-    <div class="post">
-      <div class="heading">
-        <h1><%= @post.music.name %></h1>
-        <h2><%= @post.music.artist %></h2>
+  <%= render 'shared/aside_user_info', object: @post.user %>
+  <div class="post-<%= @post.id %> col-md-8">   
+    <div class="post_show row">
+      <div class="col-md-10">
+        <div class="heading">
+          <h2><%= @post.music.name %> - <%= @post.music.artist %></h2>
+        </div>
+
+        <div class="content"><%= @post.content %></div>
+        
+        <div class="timestamp">
+          Posted <%= time_ago_in_words(@post.created_at) %> ago.
+          <% if current_user?(@post.user) %>
+            <%= link_to "edit", edit_post_path(@post) %>
+            <span> / </span>
+            <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+          <% end %>
+        </div>
+        
+      </div>
+      
+      <div>
         <img src="<%= @post.music.artwork %>" alt="<%= @post.music.name %>">
       </div>
-
-      <div class="content"><%= @post.content %></div>
-      <span class="timestamp">Posted <%= time_ago_in_words(@post.created_at) %> ago.</span>
-      <% if current_user?(@post.user) %>
-        <%= link_to "edit", edit_post_path(@post) %>
-        <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
-      <% end %>
     </div>
   </div>
-
-  <div class="col-md-4">music player here</div>
 </div>

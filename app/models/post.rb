@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :music, allow_destroy: true
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true
 end
