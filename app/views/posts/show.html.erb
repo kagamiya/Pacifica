@@ -1,29 +1,14 @@
+<% provide(:title, "#{@post.user.name} / #{@post.music.name} - #{@post.music.artist}") %>
 <% provide(:page_wrapper, "post_show_wrapper") %>
 <div class="row">
-  <%= render 'shared/aside_user_info', object: @post.user %>
+  <aside class=col-md-4>
+    <%= render 'shared/aside_user_info', object: @post.user %>
+    <span class="aside_music_player">
+      <%= player_for(@post.music.collection_id) %>
+    </span>
+  </aside>
+  
   <div class="post-<%= @post.id %> col-md-8">   
-    <div class="post_show row">
-      <div class="col-md-10">
-        <div class="heading">
-          <h2><%= @post.music.name %> - <%= @post.music.artist %></h2>
-        </div>
-
-        <div class="content"><%= @post.content %></div>
-        
-        <div class="timestamp">
-          Posted <%= time_ago_in_words(@post.created_at) %> ago.
-          <% if current_user?(@post.user) %>
-            <%= link_to "edit", edit_post_path(@post) %>
-            <span> / </span>
-            <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
-          <% end %>
-        </div>
-        
-      </div>
-      
-      <div>
-        <img src="<%= @post.music.artwork %>" alt="<%= @post.music.name %>">
-      </div>
-    </div>
+    <%= render 'post_detail' %>
   </div>
 </div>

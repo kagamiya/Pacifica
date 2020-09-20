@@ -1,7 +1,9 @@
 <% provide(:title, @user.name) %>
 <% provide(:page_wrapper, "main_wrapper") %>
 <div class="row">
-  <%= render 'shared/aside_user_info', object: @user %>
+  <aside class=col-md-4>
+    <%= render 'shared/aside_user_info', object: @user %>
+  </aside>
 
   <div class="col-md-8">
     <% if @user.posts.any? %>

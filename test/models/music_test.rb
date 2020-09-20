@@ -30,4 +30,11 @@ class MusicTest < ActiveSupport::TestCase
     @music.collection_id = ""
     assert_not @music.valid?
   end
+
+  test "associated music should be destroyed" do
+    @post.save
+    assert_difference 'Music.count', -1 do
+      @post.destroy
+    end
+  end
 end

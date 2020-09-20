@@ -1,7 +1,9 @@
 <% if logged_in? %>
   <% provide(:page_wrapper, "main_wrapper") %>
   <div class="row home">
-    <%= render 'shared/aside_user_info', object: current_user %>
+    <aside class=col-md-4>
+      <%= render 'shared/aside_user_info', object: current_user %>
+    </aside>
 
     <div class="col-md-8">
       <%= render 'shared/feed' %>
