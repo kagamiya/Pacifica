@@ -3,16 +3,19 @@ User.create!(name:  "kagamiya",
              email: "kagamiya@example.com",
              password:              "foobar",
              password_confirmation: "foobar",
+             profile: Faker::Lorem.sentence(word_count: 15),
              admin: true)
 
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@pacifica.org"
   password = "password"
+  profile = Faker::Lorem.sentence(word_count: 15)
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               profile: profile)
 end
 
 # sample posts associated with users

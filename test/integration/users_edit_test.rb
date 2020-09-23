@@ -19,7 +19,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               email: "foo@invalid",
                                               password: "foo",
                                               password_confirmation: "bar",
-                                              picture: "" } }
+                                              picture: "",
+                                              profile: "a" * 141 } }
     assert_template 'users/edit'
     assert_select "div.alert"                                          
   end
@@ -35,17 +36,20 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     email = "foo@bar.com"
     # upload picture for user icon
     picture = fixture_file_upload('test/fixtures/sample.png', 'image/png')
+    profile = "a" * 140
     patch user_path(@user), params: { user: { name:name,
                                               email: email,
                                               password: "",
                                               password_confirmation: "",
-                                              picture: picture } }
+                                              picture: picture,
+                                              profile: profile } }
     assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
-    assert_equal name, @user.name
+    assert_equal name,  @user.name
     assert_equal email, @user.email
     assert @user.picture?
     assert_equal "/uploads/user/picture/#{@user.id}/sample.png", @user.picture.url                                        
+    assert_equal profile, @user.profile
   end
 end

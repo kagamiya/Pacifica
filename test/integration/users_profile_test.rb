@@ -13,6 +13,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select 'title', full_title(@user.name)
     assert_select 'a', text: @user.name
+    assert_select 'p', text: @user.profile
     assert_select 'img.user_icon'
 
     # user's posts
