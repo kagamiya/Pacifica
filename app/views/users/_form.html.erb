@@ -16,6 +16,9 @@
   <% end %>
   
   <% if logged_in? %>
+    <%= f.label :profile %>
+    <%= f.text_area :profile, class: 'form-control' %>
+
     <span class="picture">
       <%= f.label :user_icon %>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

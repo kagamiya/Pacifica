@@ -64,11 +64,7 @@ GEM
       rest-client (~> 2.0)
     ansi (1.5.0)
     ast (2.4.1)
-<<<<<<< HEAD
     autoprefixer-rails (10.0.0.2)
-=======
-    autoprefixer-rails (9.8.6.3)
->>>>>>> 52f4d340d427fb1e664b77a1d5f6734d22ed3471
       execjs
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -330,11 +326,7 @@ GEM
     mysql2 (0.5.3)
     nenv (0.3.0)
     netrc (0.11.0)
-<<<<<<< HEAD
     nio4r (2.5.4)
-=======
-    nio4r (2.5.3)
->>>>>>> 52f4d340d427fb1e664b77a1d5f6734d22ed3471
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.3)

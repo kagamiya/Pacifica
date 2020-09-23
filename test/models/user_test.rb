@@ -33,6 +33,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "profile should not be too long" do
+    @user.profile = "a" * 141
+    assert_not @user.valid?
+  end
+
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com
                          USER@foo.COM
