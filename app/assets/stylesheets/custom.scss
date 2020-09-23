@@ -7,25 +7,35 @@
   box-sizing:         border-box;
 }
 
+/* colors */
+
+$dark-gray: #333;
+$gray : #808080;
+$lighter-gray: #9a9a9a;
+$light-gray: #d3d3d3;
+$white-smoke: #fdfdfd;
+
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
+}
+
+.wrapper {
+  min-height: 700px;
+  height: auto;
 }
 
 section {
   overflow: auto;
 }
 
-textarea {
-  resize: vertical;
+.pagination {
+  margin: 10px 0;
 }
 
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
+textarea {
+  resize: vertical;
 }
 
 /* miscellaneous */
@@ -38,147 +48,211 @@ textarea {
   @include box_sizing;
 }
 
+.alert {
+  margin-top: 10px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
 p {
-  font-size: 1.1em;
+  font-size: 16px;
   line-height: 1.7em;
 }
 
+a {
+  cursor: pointer;
+}
+
+/* fonts */
+
+@font-face {
+  font-family: 'MANIFESTO';
+  src: font-url('MANIFESTO.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* background images */
+
+$bg1: url('bg1.jpeg');
+$bg2: url('bg2.jpeg');
+$bg3: url('bg3.jpeg');
+$bg4: url('bg4.jpeg');
+$bg5: url('bg5.jpeg');
+$bg6: url('bg6.jpeg');
+$bg7: url('bg7.jpeg');
+$bg8: url('bg8.jpeg');
+
+@mixin bg_img($bg, $size) {
+  background-image: $bg;
+  background-size: $size;
+}
+
+.home_wrapper, .user_form_wrapper {
+  @include bg_img($bg4, cover);
+}
+
+.main_wrapper {
+  @include bg_img($bg5, contain);
+}
+
+.users_wrapper {
+  @include bg_img($bg1, contain);
+}
+
+.post_new_wrapper {
+  @include bg_img($bg7, contain);
+}
+
+.post_show_wrapper, .post_edit_wrapper {
+  @include bg_img($bg8, cover);
+}
+
 /* header */
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #202020;
+  border-bottom: 1px solid $gray;
+}
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  padding-top: 7px;
+  font-family: 'MANIFESTO';
   color: white;
-  text-transform: uppercase;
+  font-size: 30px;
   letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+  text-transform: uppercase;
   &:hover {
     color: white;
     text-decoration: none;
   }
 }
 
+@mixin header_item {
+  float: left;
+  display: inline-block;
+  padding-right: 15px;
+  line-height: 50px;
+  font-family: 'Moon';
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: $gray;
+  text-decoration: none;
+  &:hover {
+    color: $light-gray;
+    text-decoration: none;
+  }
+}
+
+.header_right {
+  float: right;
+}
+
+.header_item {
+  @include header_item;
+  .user_icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 10px 0;
+    margin-right: 10px;
+  }
+  i {
+    padding-right: 5px;
+  }
+}
+
+.account_menu {
+  @include header_item;
+  &:focus {
+    color: $light-gray;
+    text-decoration: none;
+  }
+}
+
+.account_items {
+  .user_name {
+    color: $dark-gray;
+    &:hover {
+      color: black;
+    }
+  }
+  .user_icon {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    margin-left: 10px;
+  }
+}
+
 /* footer */
 
 footer {
-  margin-top: 45px;
+  background-color: #333333;
+  height: auto;
+  width: 100%;
   padding-top: 5px;
+  padding-bottom: 10px;
   border-top: 1px solid $gray;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
+  color: $light-gray;
 }
 
-/* sidebar */
-
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
-
-.user_icon {
-  height: 80px;
-  width: 80px;
-  float: left;
-  margin-right: 10px;
-}
-
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
+.footer_top {
   margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
+  font-family: 'Moon';
+  text-align: center;
+  .back_to_top {
+    font-size: 18px;
+    color: #808080;
+    cursor: pointer;
+    &:hover {
+      color: $light-gray;
+    }
   }
 }
 
-.users.follow {
-  padding: 0;
+.footer_bottom {
+  margin-top: 15px;
+  a {
+    font-family: 'MANIFESTO';
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+  }
+  p {
+    color: $lighter-gray;
+    font-size: 10px;
+  }
+}
+
+/* home */
+
+.home_wrapper {
+  h1 {
+    margin-top: 100px;
+    color: white;
+    text-align: left;
+  }
+  p {
+    color: white;
+  }
 }
 
 /* forms */
@@ -205,7 +279,7 @@ input {
 .field_with_errors {
   @extend .has-error;
   .form-control {
-    color: $state-danger-text;
+    color: red;
   }
 }
 
@@ -223,63 +297,249 @@ input {
   margin-left: 0;
 }
 
+/* User forms signup/login/edit */
+
+.user_form {
+  margin-top: 20px;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 5px;
+  background-color: $white-smoke;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 32px;
+    text-align: center;
+  }
+  p {
+    margin-top: 5px;
+  }
+}
+
+/* sidebar */
+
+aside {
+  margin-top: 15px;
+  padding-top: 15px;
+  div {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: $white-smoke;
+  }
+  .user_info {
+    padding-bottom: 8px;
+    .user_icon {
+      float: left;
+      height: 80px;
+      width:  80px;
+      border-radius: 50%;
+    }
+    div {
+      float: left;
+      padding-top: 15px;
+      font-size: 20px;
+      color: $dark-gray;
+      a {
+        color: $dark-gray;
+        text-decoration: none;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.user_profile {
+  p {
+    margin-bottom: 8px;
+  }
+}
+
+.stats {
+  margin-bottom: 8px;
+  a {
+    margin-right: 8px;
+  }
+  .stat {
+    font-size: 16px;
+    color: $dark-gray;
+  }
+  span {
+    color: $gray;
+  }
+}
+
+.home, .post_show_wrapper, .post_edit_wrapper {
+  .user_profile, .edit_link {
+    display: none;
+  }
+}
+
 /* Users index */
 
-.users {
+@mixin index_bg {
+  margin: 30px 0 15px 0;
+  padding: 0 15px;
+  padding-bottom: 10px;
+  background-color: $white-smoke;
+  border-radius: 5px;
+}
+
+@mixin index($icon_size, $user_font_size) {
   list-style: none;
-  margin: 0;
+  padding: 0;
   li {
-    overflow: auto;
+    overflow: hidden;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-top: 1px solid #e8e8e8;
+    .user_icon {
+      float: left;
+      height: $icon_size;
+      width:  $icon_size;
+      border-radius: 50%;
+      margin-right: 10px;
+      margin-top:    5px;
+    }
+    .user {
+      display: block;
+      margin-top: 8px;
+      color: $dark-gray;
+      font-size: $user_font_size;
+      text-decoration: none;
+    }
+    @content;
+  }
+}
+
+.users_index {
+  @include index_bg;
+  h1 {
+    text-align: center;
+    margin: 0;
+    padding-top: 15px;
+  }
+  h3 {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+}
+
+.users {
+  @include index(80px, 20px) {
+    .user_profile {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
   }
 }
 
 /* posts */
 
+.posts_feed {
+  @include index_bg;
+}
+
 .posts {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
+  @include index(50px, 15px) {
     img {
+      float: right;
+    }
+    .heading {
+      h2 {
+        margin: 15px 0;
+        color: $dark-gray;
+        font-size: 20px;
+        text-align: left;
+        text-decoration: none;
+      }
+    }
+    .timestamp {
+      color: $gray;
       display: block;
-      padding: 5px 0;
+      margin-left: 60px;
+    } 
+  }
+}
+
+/* post new/show */
+
+.post_show, .post_new {
+  @include index_bg;
+  h3 {
+    padding-top: 15px;
+  }
+  .heading {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    h2 {
+      padding-bottom: 10px;
     }
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
+  .content {
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 18px;
   }
-  .user_icon {
-    height: 50px;
-    width:  50px;
+  img {
+    height: 120px;
+    width: 120px;
+    margin-top: 20px;
+  }
+  .timestamp {
+
+    color: $gray;
+    text-align: right;
+  }
+  .post_form {
+    margin-bottom: 15px;
+    textarea {
+      min-height: 420px;
+      height: 100%;
+    }
+    .edit_options {
+      margin-top: 5px;
+    }
+  }
+}
+
+.aside_music_player {
+  padding: 0;
+  margin: 0;
+  margin-top: 15px;
+  display: block;
+  height: 450px;
+}
+
+/* Music serch form */
+
+.search_music {
+  @include index_bg;
+}
+
+.search_results {
+  @include index_bg;
+  #results {
+    width: auto;
+    height:300px;
+    overflow: auto;
+    margin-bottom: 10px;
+    background: $dark-gray;
+    color:#eee;
+  }
+  .result_item {
+    overflow: hidden;
+    padding: 5px;
+    margin: 5px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+  }
+  .result_artwork {
     float: left;
     margin-right: 10px;
-    margin-top:    5px;
   }
-}
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
+  .show-player {
+    float: left;
   }
 }

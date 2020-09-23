@@ -12,14 +12,14 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_template 'users/show'
     assert_select 'title', full_title(@user.name)
-    assert_select 'h1', text: @user.name
-    assert_select 'h1>img.user_icon'
+    assert_select 'a', text: @user.name
+    assert_select 'img.user_icon'
 
     # user's posts
     assert_match @user.posts.count.to_s, response.body
     assert_select 'div.pagination', count: 1
     @user.posts.paginate(page:1).each do |post|
-      assert_match post.content, response.body
+      assert_select 'a[href=?]', post_path(post)
     end
   end
 end

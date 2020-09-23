@@ -12,7 +12,7 @@ gem 'puma', '3.9.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap for layout
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use faker for example users/posts
-gem 'faker', '1.7.3'
+gem 'faker', '2.13.0'
+gem 'rubocop-faker'
 # Use carrierwave to upload image files
 gem 'carrierwave', '1.2.2'
 # Use mini_magick to resize image files

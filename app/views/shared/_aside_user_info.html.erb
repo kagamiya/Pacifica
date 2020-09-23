@@ -1,0 +1,19 @@
+<div class="aside_user_info">
+  <section class="user_info">
+    <%= render 'shared/user_info', object: object %>
+  </section>
+
+  <section class="user_profile">
+    <p>User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here. User Profile will be here.</p>
+  </section>
+  
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </section>
+  
+  <% if current_user?(object)%>
+  <section class="edit_link">
+    <%= link_to "Edit Profile", edit_user_path(object) %>
+  </section>
+  <% end %>
+</div>

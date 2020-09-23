@@ -1,7 +1,10 @@
 <li>
   <%= icon_for(user) %>
-  <%= link_to user.name, user %>
+  <%= link_to user.name, user, class: "user" %>
+  
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete, data: {  confirm: "You sure?" } %>
+    <%= link_to "delete", user, method: :delete, data: {  confirm: "You sure?" } %>
   <% end %>
+
+  <div class="user_profile">User profile will be here User profile will be here User profile will be here User profile will be here User profile will be here User profile will be here User profile will be here</div>
 </li>

@@ -1,0 +1,52 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+A:
+  name:   "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: orange
+
+B:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: most_recent
+
+<% 30.times do |n| %>
+music_<%= n %>:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: post_<%= n %>
+<% end %>
+
+C:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: ants
+
+D:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: zone
+
+E:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: tone
+
+F:
+  name: "<%= Faker::Music.album %>"
+  artist: "<%= Faker::Music.band %>"
+  artwork: 'sample.png'
+  collection_id: "<%= Faker::Number.number(digits: 10) %>"
+  post: van
