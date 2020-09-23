@@ -6,6 +6,11 @@
     <% if current_user?(@post.user) && current_page?(edit_post_path(@post)) %>
       <div class="post_form">
         <%= render 'post_form' %>
+        <div class="edit_options">
+          <%= link_to "Discard changes", post_path(@post) %>
+          <span> | </span>
+          <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+        </div>
       </div>
     <% else %>
       <div class="content"><%= @post.content %></div>      

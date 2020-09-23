@@ -148,12 +148,16 @@ $(function() {
                           style: "height: 450px; width: 100%; max-width: 450px; overflow: hidden; border-radius: 10px; background: transparent;" });
   }
 
-  // scrollbar for search results
-  $('#results').mCustomScrollbar();
-
-  // back-to-top button
-  $('#back_to_top').click(function() {
-    $('html, body').animate({ 'scrollTop': 0 }, 'slow');
+  
+  $(document).on('turbolinks:load', function() {
+    // turbolinksを無効化したい処理
+    // scrollbar for search results
+    $('#results').mCustomScrollbar();
+  
+    // back-to-top button
+    $('#back_to_top').click(function() {
+      $('html, body').animate({ 'scrollTop': 0 }, 'slow');
+    });
   });
 
 });  

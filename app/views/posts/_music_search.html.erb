@@ -1,17 +1,15 @@
-<h3>Find collection
-  <span> You can search for a collection with the artist name or the collection name</span>
-</h3>
+<div class="post_new search_music">
+  <h3>STEP1 - FIND</h3>
+  <p>Find the album with its artist name</p>
+  <input id="artist" class="search form-control" type="text" placeholder="input an artist name and press return">
+</div>
 
-<p>Artist Name</p> 
-<input id="artist" class="search" type="text" placeholder="write an artist name and press return">
-
-<div id="search_results" class="search-results">
-  <h3>Search results
-    <span>Click the collection you want to share. Then the music player appears below the reults.</span>
-  </h3>
+<div id="search_results" class="post_new search_results">
+  <h3>STEP2 - SELECT</h3>
+  <p>Click to select the album you want to share</p>
 
   <div id="results">Search results will be showed here</div>  
-  <span id="show_player" class="col-md-4"></span>
+  <span id="show_player" class="aside_music_player"></span>
 </div>
 
 <%= javascript_include_tag 'jquery.mCustomScrollbar.js', 'data-turbolinks-track' => true %>
