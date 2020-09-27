@@ -1,0 +1,16 @@
+<% provide(:title, "#{@user.name} / Likes") %>
+<% provide(:page_wrapper, "like_wrapper") %>
+<div class="row">
+  <aside class=col-md-4>
+    <%= render 'shared/aside_user_info', object: @user %>
+  </aside>
+
+  <div class="col-md-8">
+    <div class="posts_feed">
+      <ol class="posts">
+        <%= render @likes %>
+      </ol>
+      
+    </div>
+  </div>
+</div>

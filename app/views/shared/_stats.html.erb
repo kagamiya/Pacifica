@@ -12,3 +12,12 @@
   </strong>
   <span>followers</span>
 </a>
+
+<span> | </span>
+
+<a href="<%= user_likes_path(@user) %>" class="like_count">
+  <strong class="stat">
+    <%= @user.like_posts.count %>
+  </strong>
+  <span>Likes</span>
+</a>

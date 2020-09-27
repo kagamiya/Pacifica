@@ -31,19 +31,21 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user)
     assert_select "a[href=?]", edit_user_path(@user)
     assert_select "a[href=?]", new_post_path
-
+    assert_select "a[href=?]", user_likes_path(@user)
+    
     # log out
     delete logout_path
     assert_not is_logged_in?
     assert_redirected_to root_url
-      # simulate the user who will log out with second window
-      delete logout_path
+    # simulate the user who will log out with second window
+    delete logout_path
     follow_redirect!
     assert_select "a[href=?]", login_path
-    assert_select "a[href=?]", logout_path,           count: 0
-    assert_select "a[href=?]", users_path,            count: 0
-    assert_select "a[href=?]", user_path(@user),      count: 0
-    assert_select "a[href=?]", edit_user_path(@user), count: 0
+    assert_select "a[href=?]", logout_path,            count: 0
+    assert_select "a[href=?]", users_path,             count: 0
+    assert_select "a[href=?]", user_path(@user),       count: 0
+    assert_select "a[href=?]", edit_user_path(@user),  count: 0
+    assert_select "a[href=?]", user_likes_path(@user), count: 0
   end
 
   test "login with remembering" do
