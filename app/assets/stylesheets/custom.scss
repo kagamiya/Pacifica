@@ -103,7 +103,7 @@ $bg8: url('bg8.jpeg');
   @include bg_img($bg4, cover);
 }
 
-.main_wrapper {
+.main_wrapper, .like_wrapper {
   @include bg_img($bg5, contain);
 }
 
@@ -364,12 +364,15 @@ aside {
   a {
     margin-right: 8px;
   }
+  span {
+    color: $gray;
+  }
   .stat {
     font-size: 16px;
     color: $dark-gray;
   }
-  span {
-    color: $gray;
+  .like_count {
+    margin-left: 3px;
   }
 }
 
@@ -461,6 +464,10 @@ aside {
       color: $gray;
       display: block;
       margin-left: 60px;
+      .right_timestamp {
+        float: right;
+        margin-right: 15px;
+      }
     } 
   }
 }

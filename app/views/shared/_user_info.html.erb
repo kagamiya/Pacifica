@@ -3,6 +3,6 @@
   <%= link_to object.name, object %>
   <p>Sharing <%= pluralize(object.posts.count, "album") %></p>
   <% unless @user.nil? %>
-    <%= render 'follow_form' if logged_in? %>
+    <%= render 'shared/follow_form' if logged_in? %>
   <% end %>
 </div>
