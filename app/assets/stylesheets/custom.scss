@@ -491,9 +491,11 @@ aside {
     margin-top: 20px;
   }
   .timestamp {
-
     color: $gray;
     text-align: right;
+    .left_timestamp {
+      float: left;
+    }
   }
   .post_form {
     margin-bottom: 15px;
@@ -544,5 +546,21 @@ aside {
   }
   .show-player {
     float: left;
+  }
+}
+
+/* likes */
+
+.like_button {
+  border-style: none;
+  background-color: $white-smoke;
+  .heart_red {
+    color: red;
+  }
+  .like_count {
+    font-size: 18px;
+  }
+  .liked {
+    color: red;
   }
 }

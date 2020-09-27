@@ -1,0 +1,7 @@
+<span id="like_form" class="like_form left_timestamp">
+<% if current_user.like?(@post) %>
+  <%= render 'unlike' %>
+<% else %>
+  <%= render 'like' %>
+<% end %>
+</span>

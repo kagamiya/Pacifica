@@ -20,16 +20,27 @@
               <span class="user_name"><%= current_user.name %></span>
             </li>
             <li class="divider"></li>
-            <li><%= link_to current_user do %>
+            <li>
+              <%= link_to current_user do %>
               <i class="fas fa-user-alt"></i>My Profile
-            <% end %></li>
-            <li><%= link_to edit_user_path(current_user) do %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_likes_path(current_user) do %>
+              <i class="fas fa-heart"></i>Likes
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_path(current_user) do %>
               <i class="fas fa-cog"></i>Settings
-            <% end %></li>
+              <% end %>
+            </li>
             <li class="divider"></li>
-            <li><%= link_to logout_path, method: :delete do %>
+            <li>
+              <%= link_to logout_path, method: :delete do %>
               <i class="fas fa-sign-out-alt"></i>Log Out
-            <% end %></li>
+              <% end %>
+            </li>
           </ul>
         </div>
 

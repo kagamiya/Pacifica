@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    resources :likes, only: [:index, :create, :destroy]
   end
 
   get    '/login',  to: 'sessions#new'
