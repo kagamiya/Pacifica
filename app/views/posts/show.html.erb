@@ -10,5 +10,9 @@
   
   <div class="post-<%= @post.id %> col-md-8">   
     <%= render 'post_detail' %>
+    <div>
+      <%= render 'comments/comment_form' %>
+      <%= render @comments %>
+    </div>
   </div>
 </div>
