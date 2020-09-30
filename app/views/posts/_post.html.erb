@@ -7,8 +7,14 @@
   </a>
   <div class="timestamp">
     <span class="left_timestamp">
-      <i class="far fa-heart"></i>
-      <%= post.like_users.count %>
+      <span class="comment_count">
+        <i class="far fa-comment"></i>
+        <span><%= post.comments.count %></span>
+      </span>
+      <span>
+        <i class="far fa-heart"></i>
+        <%= post.like_users.count %>
+      </span>
     </span>
     <span class="right_timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
   </div>

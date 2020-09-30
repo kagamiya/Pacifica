@@ -464,6 +464,11 @@ aside {
       color: $gray;
       display: block;
       margin-left: 60px;
+      .left_timestamp {
+        span {
+          padding-right: 5px;
+        }
+      }
       .right_timestamp {
         float: right;
         margin-right: 15px;
@@ -502,6 +507,14 @@ aside {
     text-align: right;
     .left_timestamp {
       float: left;
+      span {
+        display: inline-block;
+      }
+      .comment_count {
+        span {
+          font-size: 18px;
+        }
+      }
     }
   }
   .post_form {
@@ -522,6 +535,39 @@ aside {
   margin-top: 15px;
   display: block;
   height: 450px;
+}
+
+/* post comments */
+
+.post_comments {
+  @include index_bg;
+  h3 {
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .comment_form {
+    overflow: hidden;
+    margin-bottom: 10px;
+    .btn {
+      float: right;
+      width: 100px;
+    }
+  }
+}
+
+.comments {
+  @include index(50px, 14px);
+}
+
+.comment {
+  p {
+    font-size: 16px;
+  }
+  .timestamp {
+    text-align: right;
+    color: $gray;
+  }
 }
 
 /* Music serch form */

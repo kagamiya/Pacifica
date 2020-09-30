@@ -2,7 +2,8 @@
   <div class="col-md-10">
     <div class="heading">
       <h2><%= @post.music.name %> - <%= @post.music.artist %></h2>
-    </div>        
+    </div>
+
     <% if current_user?(@post.user) && current_page?(edit_post_path(@post)) %>
       <div class="post_form">
         <%= render 'post_form' %>
@@ -16,6 +17,10 @@
       <div class="content"><%= @post.content %></div>      
       <div class="timestamp">
         <span class="left_timestamp">
+          <span class="comment_count">
+            <i class="far fa-lg fa-comment"></i>
+            <span><%= @post.comments.count %></span>
+          </span>
           <%= render 'like_form' %>
         </span>
         
@@ -30,6 +35,7 @@
         </span>
       </div>
     <% end %>
+    
   </div>
   
   <div>
