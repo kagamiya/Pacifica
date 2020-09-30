@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to @post
-    else 
+    else
+      flash[:danger] = "Comment should not be empty or too long (up to 140 characters)."
       redirect_to @post
-      # render 'posts/show'
     end
   end
 

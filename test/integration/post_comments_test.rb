@@ -14,6 +14,7 @@ class PostCommentsTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Comment.count' do
       post comments_path, params: { comment: { user_id: @user.id, post_id: @post.id, content: "" } }
     end
+    assert_not flash.empty?
     # assert_select 'div#error_explanation'
   end
 

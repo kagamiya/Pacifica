@@ -10,9 +10,12 @@
   
   <div class="post-<%= @post.id %> col-md-8">   
     <%= render 'post_detail' %>
-    <div>
+    <div class="post_comments">
+      <h3>Comment (<%= @post.comments.count %>)</h3>
       <%= render 'comments/comment_form' %>
-      <%= render @comments %>
+      <ul class="comments">
+        <%= render @comments %>
+      </ul>
     </div>
   </div>
 </div>

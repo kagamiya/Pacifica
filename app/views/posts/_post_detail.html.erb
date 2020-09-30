@@ -17,6 +17,10 @@
       <div class="content"><%= @post.content %></div>      
       <div class="timestamp">
         <span class="left_timestamp">
+          <span class="comment_count">
+            <i class="far fa-lg fa-comment"></i>
+            <span><%= @post.comments.count %></span>
+          </span>
           <%= render 'like_form' %>
         </span>
         
