@@ -3,12 +3,15 @@
     <%= link_to "Pacifica", root_path, id: "logo" %>
     <ul class="header_right">
       <% if logged_in? %>
+        <%= render 'posts/search_form' %>
         <%= link_to new_post_path, data: { "turbolinks" => false }, class: "header_item" do %>
           <i class="fas fa-music"></i>Create
         <% end %>
+
         <%= link_to users_path, class: "header_item" do %>
           <i class="fas fa-user-friends"></i>Users
         <% end %>
+
         <div class="dropdown header_item">
           <a href="#" class="dropdown-toggle account_menu" data-toggle="dropdown">
             <%= icon_for(current_user) %>Account <b class="caret"></b>
@@ -43,7 +46,6 @@
             </li>
           </ul>
         </div>
-
       <% else %>
         <%= link_to login_path, class: "header_item" do %>
           <i class="fas fa-sign-in-alt"></i>Log In
