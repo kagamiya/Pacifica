@@ -46,6 +46,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    if params[:keyword].present?
+      @keyword = params[:keyword]
+      @searched_posts = Post.joins(:music).select("posts.*, musics.*").where("name LIKE? OR artist LIKE?", "%#{@keyword}%", "%#{@keyword}%").paginate(page: params[:page])
+    else
+      flash[:danger] = "Search keywords should not be empty."
+      redirect_to request.referrer || root_url
+    end
+  end
+
   private
 
     def post_params

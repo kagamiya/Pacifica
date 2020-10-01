@@ -14,7 +14,7 @@
         </div>
       </div>
     <% else %>
-      <div class="content"><%= @post.content %></div>      
+      <div class="content"><%= safe_join(@post.content.split("\n"), tag(:br)) %></div>      
       <div class="timestamp">
         <span class="left_timestamp">
           <span class="comment_count">
@@ -35,7 +35,6 @@
         </span>
       </div>
     <% end %>
-    
   </div>
   
   <div>

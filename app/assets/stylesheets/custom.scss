@@ -111,7 +111,7 @@ $bg8: url('bg8.jpeg');
   @include bg_img($bg1, contain);
 }
 
-.post_new_wrapper {
+.post_new_wrapper, .post_search_wrapper {
   @include bg_img($bg7, contain);
 }
 
@@ -199,6 +199,24 @@ header {
     width: 50px;
     margin: 0;
     margin-left: 10px;
+  }
+}
+
+.search_form {
+  height: 50px;
+  width: 350px;
+  input {
+    display: inline;
+    float: left;
+    width: 250px;
+    margin-top: 8px;
+    margin-right: 5px;
+  }
+  button {
+    display: inline;
+    float: left;
+    width: 40px;
+    margin-top: 8px;
   }
 }
 
@@ -567,6 +585,29 @@ aside {
   .timestamp {
     text-align: right;
     color: $gray;
+  }
+}
+
+/* posts search */
+
+.searched_posts_index {
+  @include index_bg;
+  h1 {
+    text-align: center;
+    margin: 0;
+    padding: 15px 0;
+    color: $dark-gray;
+  }
+  .posts {
+    @include index(80px, 20px) {
+      .user_profile {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+    }
+    .left_timestamp {
+      margin-left: 30px;
+    }
   }
 }
 
