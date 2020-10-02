@@ -157,15 +157,31 @@ $(function() {
                           style: "height: 450px; width: 100%; max-width: 450px; overflow: hidden; border-radius: 10px; background: transparent;" });
   }
 
-  
   $(document).on('turbolinks:load', function() {
-    // turbolinksを無効化したい処理
     // scrollbar for search results
     $('#results').mCustomScrollbar();
   
     // back-to-top button
     $('#back_to_top').click(function() {
       $('html, body').animate({ 'scrollTop': 0 }, 'slow');
+    });
+
+    // switch home slide images
+    const $slide = $('.slide'),
+          $info  = $('.slide_info');
+    var index = 0;
+    $slide.eq(index).css('display', 'block');
+    $info.eq(index).css('display', 'block');
+
+    $('.index_btn').click(function() {
+      var clickedIndex = $('.index_btn').index(this);
+      if ( clickedIndex != index ) {
+        $slide.eq(index).css('display', 'none');
+        $info.eq(index).css('display', 'none');
+        index = clickedIndex;
+        $slide.eq(index).fadeIn();
+        $info.eq(index).fadeIn();
+      }
     });
   });
 
