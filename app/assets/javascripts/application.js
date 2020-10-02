@@ -34,7 +34,7 @@ $(function() {
       country:   'US',
       lang:      'en_us',
       offset:    0,
-      limit:     50
+      limit:     100
     };
   
   function set_params(attribute, term) {
@@ -92,7 +92,16 @@ $(function() {
       $('#show_player').html(embed_player_html);
       // Musicモデルの属性を送信するフォームを生成
       attr_music(result);
+      // show music artist name, album name, and artwork on post create form
+      show_heading(result);
     });
+  }
+
+  // show music artist name, album name, and artwork on post create form
+  function show_heading(result) {
+    $('#heading_new').empty();
+    $('#heading_new').append( `<h3>${result.collectionName} - ${result.artistName}</h3> `);
+    $('#heading_new').append('<p>Compose your impression about this album!</p>');
   }
 
   // Musicモデルの属性を送信するフォームを生成

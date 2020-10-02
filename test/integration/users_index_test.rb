@@ -12,7 +12,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination', count: 2
-    User.paginate(page: 1).each do |user|
+    User.paginate(page: 1, per_page: 15).each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       assert_select 'div.user_profile', text: user.profile
       # confirm delete links are there when logged in as admin

@@ -41,16 +41,13 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
                                                              artwork: artwork,
                                                              collection_id: collection_id } } }
     end
-    assert_redirected_to root_url
-    follow_redirect!
     post = @user.posts.paginate(page: 1).first
-    assert_select 'a[href=?]', post_path(post)
-    
-    get post_path(post)
+    assert_redirected_to post
+    follow_redirect!
     assert_match content, response.body
     assert_match name,    response.body
     assert_match artist,  response.body
-    assert_select 'img', src: artwork
+    assert_select 'img',  src: artwork
 
     # access wrong user profile (and confirm delete links are not there)
     get user_path(users(:archer))
