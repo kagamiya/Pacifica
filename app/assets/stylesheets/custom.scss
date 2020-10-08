@@ -90,14 +90,15 @@ a {
 
 /* background images */
 
-$bg1: url('bg1.jpeg');
-$bg2: url('bg2.jpeg');
-$bg3: url('bg3.jpeg');
-$bg4: url('bg4.jpeg');
-$bg5: url('bg5.jpeg');
-$bg6: url('bg6.jpeg');
-$bg7: url('bg7.jpeg');
-$bg8: url('bg8.jpeg');
+$bg1: url('/images/bg1.jpeg');
+$bg2: url('/images/bg2.jpeg');
+$bg3: url('/images/bg3.jpeg');
+$bg4: url('/images/bg4.jpeg');
+$bg5: url('/images/bg5.jpeg');
+$bg6: url('/images/bg6.jpeg');
+$bg7: url('/images/bg7.jpeg');
+$bg8: url('/images/bg8.jpeg');
+$bg9: url('/images/bg9.jpeg');
 
 @mixin bg_img($bg, $size) {
   background-image: $bg;
@@ -105,11 +106,11 @@ $bg8: url('bg8.jpeg');
 }
 
 .home_wrapper, .user_form_wrapper {
-  @include bg_img($bg4, cover);
+  @include bg_img($bg2, cover);
 }
 
 .main_wrapper, .like_wrapper {
-  @include bg_img($bg5, contain);
+  @include bg_img($bg2, cover);
 }
 
 .users_wrapper {
