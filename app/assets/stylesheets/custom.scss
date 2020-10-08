@@ -539,6 +539,16 @@ aside {
   @include index_bg;
 }
 
+.feed_empty {
+  h3 {
+    padding-top: 15px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
 .posts {
   @include index(50px, 15px) {
     img {
