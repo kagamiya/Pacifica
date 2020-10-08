@@ -1,7 +1,9 @@
 <%= form_tag(user_like_path(current_user, @post), method: "delete", remote: true) do %>
   <%= hidden_field_tag :post_id, @post.id %>
   <%= button_tag type: "submit", class: "like_button" do %>
-  <i class="fas fa-heart fa-lg heart_red"></i>
+  <i class="fas fa-heart fa-lg heart_red">
+    <p id="like_popup" class="like_popup">Unlike</p>
+  </i>
   <span class="like_count liked"><%= @post.like_users.count %></span>
   <% end %>
 <% end %>

@@ -273,11 +273,11 @@ footer {
   padding: 70px 0 200px 0;
   .heading {
     h1 {
-      color: white;
+      color: $white-smoke;
       text-align: left;
     }
     p {
-      color: white;
+      color: $white-smoke;
       font-size: 22px;
     }
   }
@@ -730,6 +730,23 @@ aside {
 }
 
 /* likes */
+
+.like_form {
+  position: relative;
+  .like_popup {
+    position: absolute;
+    top:  30px;
+    left: -7px;
+    display: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: $white-smoke;
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    background-color: rgba(255, 40, 40, 0.9);
+  }
+}
 
 .like_button {
   border-style: none;

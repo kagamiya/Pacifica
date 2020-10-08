@@ -158,6 +158,16 @@ $(function() {
   }
 
   $(document).on('turbolinks:load', function() {
+    // like button popup
+    $('#like_form').hover(
+      function() {
+        $('#like_popup').css('display', 'block');
+      },
+      function() {
+        $('#like_popup').css('display', 'none');
+      }
+    );
+
     // scrollbar for search results
     $('#results').mCustomScrollbar();
   
