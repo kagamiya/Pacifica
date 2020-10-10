@@ -8,7 +8,7 @@ User.create!(name:  "kagamiya",
 
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@pacifica.org"
+  email = "user-#{n+1}@pacifica.com"
   password = "password"
   profile = Faker::Lorem.sentence(word_count: 15)
   User.create!(name:  name,
