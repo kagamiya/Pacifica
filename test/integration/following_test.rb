@@ -56,7 +56,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
 
   test "Feed on Home page" do
     get root_path
-    @user.feed.paginate(page: 1).each do |post|
+    @user.feed.paginate(page: 1, per_page: 10).each do |post|
       assert_select 'a[href=?]', post_path(post)
       assert_select 'a[href=?]', user_path(@user)
     end

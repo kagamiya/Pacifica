@@ -11,12 +11,7 @@
   </div>
 <% else %>
   <% provide(:page_wrapper, "home_wrapper") %>
-  <div class="row">
-    <h1>Well, It's Time</h1>
-    <p>Get in the pacific ocean of the greatest Musics</p>
-    
-    <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
-    <p>or</p>
-    <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>
-  </div>
+  
+  <%= render 'home_top' %>
+  <%= render 'home_bottom' %>
 <% end %>

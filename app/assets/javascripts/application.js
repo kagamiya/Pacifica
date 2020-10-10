@@ -34,7 +34,7 @@ $(function() {
       country:   'US',
       lang:      'en_us',
       offset:    0,
-      limit:     50
+      limit:     100
     };
   
   function set_params(attribute, term) {
@@ -92,7 +92,16 @@ $(function() {
       $('#show_player').html(embed_player_html);
       // Musicモデルの属性を送信するフォームを生成
       attr_music(result);
+      // show music artist name, album name, and artwork on post create form
+      show_heading(result);
     });
+  }
+
+  // show music artist name, album name, and artwork on post create form
+  function show_heading(result) {
+    $('#heading_new').empty();
+    $('#heading_new').append( `<h3>${result.collectionName} - ${result.artistName}</h3> `);
+    $('#heading_new').append('<p>Compose your impression about this album!</p>');
   }
 
   // Musicモデルの属性を送信するフォームを生成
@@ -148,15 +157,41 @@ $(function() {
                           style: "height: 450px; width: 100%; max-width: 450px; overflow: hidden; border-radius: 10px; background: transparent;" });
   }
 
-  
   $(document).on('turbolinks:load', function() {
-    // turbolinksを無効化したい処理
+    // like button popup
+    $('#like_form').hover(
+      function() {
+        $('#like_popup').css('display', 'block');
+      },
+      function() {
+        $('#like_popup').css('display', 'none');
+      }
+    );
+
     // scrollbar for search results
     $('#results').mCustomScrollbar();
   
     // back-to-top button
     $('#back_to_top').click(function() {
       $('html, body').animate({ 'scrollTop': 0 }, 'slow');
+    });
+
+    // switch home slide images
+    const $slide = $('.slide'),
+          $info  = $('.slide_info');
+    var index = 0;
+    $slide.eq(index).css('display', 'block');
+    $info.eq(index).css('display', 'block');
+
+    $('.index_btn').click(function() {
+      var clickedIndex = $('.index_btn').index(this);
+      if ( clickedIndex != index ) {
+        $slide.eq(index).css('display', 'none');
+        $info.eq(index).css('display', 'none');
+        index = clickedIndex;
+        $slide.eq(index).fadeIn();
+        $info.eq(index).fadeIn();
+      }
     });
   });
 

@@ -19,7 +19,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     # user's posts
     assert_match @user.posts.count.to_s, response.body
     assert_select 'div.pagination', count: 1
-    @user.posts.paginate(page:1).each do |post|
+    @user.posts.paginate(page:1, per_page: 10).each do |post|
       assert_select 'a[href=?]', post_path(post)
     end
   end

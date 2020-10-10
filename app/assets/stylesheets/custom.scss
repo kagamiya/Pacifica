@@ -21,6 +21,10 @@ body {
   padding-top: 50px;
 }
 
+li {
+  list-style: none;
+}
+
 .wrapper {
   min-height: 700px;
   height: auto;
@@ -50,6 +54,7 @@ textarea {
 
 .alert {
   margin-top: 10px;
+  margin-bottom: 0;
 }
 
 /* typography */
@@ -85,14 +90,15 @@ a {
 
 /* background images */
 
-$bg1: url('bg1.jpeg');
-$bg2: url('bg2.jpeg');
-$bg3: url('bg3.jpeg');
-$bg4: url('bg4.jpeg');
-$bg5: url('bg5.jpeg');
-$bg6: url('bg6.jpeg');
-$bg7: url('bg7.jpeg');
-$bg8: url('bg8.jpeg');
+$bg1: url('/images/bg1.jpeg');
+$bg2: url('/images/bg2.jpeg');
+$bg3: url('/images/bg3.jpeg');
+$bg4: url('/images/bg4.jpeg');
+$bg5: url('/images/bg5.jpeg');
+$bg6: url('/images/bg6.jpeg');
+$bg7: url('/images/bg7.jpeg');
+$bg8: url('/images/bg8.jpeg');
+$bg9: url('/images/bg9.jpeg');
 
 @mixin bg_img($bg, $size) {
   background-image: $bg;
@@ -100,11 +106,11 @@ $bg8: url('bg8.jpeg');
 }
 
 .home_wrapper, .user_form_wrapper {
-  @include bg_img($bg4, cover);
+  @include bg_img($bg2, cover);
 }
 
 .main_wrapper, .like_wrapper {
-  @include bg_img($bg5, contain);
+  @include bg_img($bg2, cover);
 }
 
 .users_wrapper {
@@ -188,6 +194,7 @@ header {
 }
 
 .account_items {
+  width: 220px;
   .user_name {
     color: $dark-gray;
     &:hover {
@@ -262,14 +269,83 @@ footer {
 
 /* home */
 
-.home_wrapper {
-  h1 {
-    margin-top: 100px;
-    color: white;
-    text-align: left;
+.home_top {
+  padding: 70px 0 200px 0;
+  .heading {
+    h1 {
+      color: $white-smoke;
+      text-align: left;
+    }
+    p {
+      color: $white-smoke;
+      font-size: 22px;
+    }
+  }
+}
+
+.home_btns {
+  overflow: hidden;
+  margin-top: 50px;
+  a {
+    float: left;
   }
   p {
+    float: left;
+    margin: 0 15px;
+    line-height: 44px;
     color: white;
+  }
+}
+
+.home_bottom {
+  background-color: rgba(224, 224, 224, 0.9);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.slides {
+  padding: 0;
+  li {
+    text-align: center;
+  }
+  img {
+    width: 500px;
+  }
+}
+
+.slide {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.index_btns {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.index_btn {
+  display: inline-block;
+  color: #4e90af;
+  background-color: #e0f5ff;
+  width: 40px;
+  padding: 6px 0;
+  margin: 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.slide_info {
+  display: none;
+  width: 530px;
+  h2 {
+    margin: 0;
+    margin-bottom: 15px;
   }
 }
 
@@ -290,7 +366,7 @@ input {
   color: red;
   ul {
     color: red;
-    margin: 0 0 30px 0;
+    margin: 10px 0 30px 0;
   }
 }
 
@@ -464,6 +540,16 @@ aside {
   @include index_bg;
 }
 
+.feed_empty {
+  h3 {
+    padding-top: 15px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
 .posts {
   @include index(50px, 15px) {
     img {
@@ -621,7 +707,7 @@ aside {
   @include index_bg;
   #results {
     width: auto;
-    height:300px;
+    height: 265px;
     overflow: auto;
     margin-bottom: 10px;
     background: $dark-gray;
@@ -644,6 +730,23 @@ aside {
 }
 
 /* likes */
+
+.like_form {
+  position: relative;
+  .like_popup {
+    position: absolute;
+    top:  30px;
+    left: -7px;
+    display: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: $white-smoke;
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    background-color: rgba(255, 40, 40, 0.9);
+  }
+}
 
 .like_button {
   border-style: none;

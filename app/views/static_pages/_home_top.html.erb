@@ -1,0 +1,14 @@
+<div class="home_top">
+  <div class="heading">
+    <h1>PACIFICA</h1>
+    <p>
+      Share your impressions for music albums.
+    </p>
+  </div>
+
+  <div class="home_btns">
+    <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary signup-btn" %>
+    <p>or</p>
+    <%= link_to "Log in as test user", login_path(session: { email: "user-1@pacifica.com", password: "foobar" }), method: "post", class: "btn btn-lg btn-success" %>
+  </div>
+</div>
