@@ -55,7 +55,7 @@ class PostsController < ApplicationController
         @searched_posts.uniq
       end
     else
-      flash[:danger] = "Search keywords should not be empty."
+      flash[:danger] = "Search keywords should not be empty or too short (atleast 3 characters)."
       redirect_to request.referrer || root_url
     end
   end
