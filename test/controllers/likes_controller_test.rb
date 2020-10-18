@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:michael)
     @post = posts(:ants)

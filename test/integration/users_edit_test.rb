@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UsersEditTest < ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:michael)
   end
@@ -10,10 +9,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
-      # password forms are not there on edit
-      assert_select 'input[type=?]', "password", count: 0
-      # picture form for user icon is there
-      assert_select 'input[type=?]', "file"
+    # password forms are not there on edit
+    assert_select 'input[type=?]', "password", count: 0
+    # picture form for user icon is there
+    assert_select 'input[type=?]', "file"
 
     patch user_path(@user), params: { user: { name: "",
                                               email: "foo@invalid",
@@ -22,7 +21,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               picture: "",
                                               profile: "a" * 141 } }
     assert_template 'users/edit'
-    assert_select "div.alert"                                          
+    assert_select "div.alert"
   end
 
   test "successful edit with friendly forwarding" do
@@ -37,7 +36,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     # upload picture for user icon
     picture = fixture_file_upload('test/fixtures/sample.png', 'image/png')
     profile = "a" * 140
-    patch user_path(@user), params: { user: { name:name,
+    patch user_path(@user), params: { user: { name: name,
                                               email: email,
                                               password: "",
                                               password_confirmation: "",
@@ -49,7 +48,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal name,  @user.name
     assert_equal email, @user.email
     assert @user.picture?
-    assert_equal "/uploads/user/picture/#{@user.id}/sample.png", @user.picture.url                                        
+    assert_equal "/uploads/user/picture/#{@user.id}/sample.png", @user.picture.url
     assert_equal profile, @user.profile
   end
 end

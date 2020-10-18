@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PostInterfaceTest < ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:michael)
   end
@@ -32,7 +31,7 @@ class PostInterfaceTest < ActionDispatch::IntegrationTest
                                                              collection_id: "" } } }
     end
     assert_select 'div#error_explanation'
-    
+
     # valid post with music data
     assert_difference ['Post.count', 'Music.count'], 1 do
       post posts_path, params: { post: { content: content,

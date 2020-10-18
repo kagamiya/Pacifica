@@ -1,12 +1,11 @@
 require 'test_helper'
 
 class PostsEditTest < ActionDispatch::IntegrationTest
-
   def setup
     @post = posts(:orange)
     @user = users(:michael)
   end
-  
+
   test "unsuccessful edit" do
     log_in_as(@user)
     get edit_post_path(@post)

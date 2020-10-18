@@ -38,3 +38,7 @@
 
 # Ignore .DS_Store
 .DS_Store
+
+# Ignore files associated with rubocop
+.rubocop.yml
+.rubocop_todo.yml

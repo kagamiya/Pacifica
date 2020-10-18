@@ -1,11 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
   def setup
-    @user = User.new(name:  "Example User",
+    @user = User.new(name: "Example User",
                      email: "user@example.com",
-                     password:              "foobar",
+                     password: "foobar",
                      password_confirmation: "foobar")
   end
 
@@ -50,10 +49,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email validation should reject invalid addresses" do
-    invalid_addresses = %w[user@example,com 
-                           user_at_foo.org 
+    invalid_addresses = %w[user@example,com
+                           user_at_foo.org
                            user.name@example.
-                           foo@bar_baz.com 
+                           foo@bar_baz.com
                            foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
@@ -119,7 +118,7 @@ class UserTest < ActiveSupport::TestCase
     lana.posts.each do |post_following|
       assert michael.feed.include?(post_following)
     end
-    #confirm posts of mine are there
+    # confirm posts of mine are there
     michael.posts.each do |post_self|
       assert michael.feed.include?(post_self)
     end

@@ -37,8 +37,8 @@ gem 'carrierwave', '1.2.2'
 # Use mini_magick to resize image files
 gem 'mini_magick', '4.7.0'
 # Use willpaginate for users/posts index
-gem 'will_paginate'          
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'will_paginate'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
@@ -50,23 +50,28 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rubocop', require: false
 end
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'terminal-notifier-guard', '~> 1.6.1'
+  # Use rubocop
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
   gem 'rails-controller-testing'
+  # Use minitest for test
   gem 'minitest',                 '5.10.3'
   gem 'minitest-reporters',       '1.1.14'
+  # Auto testing with guard
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.4'
   # Adds support for Capybara system testing and selenium driver

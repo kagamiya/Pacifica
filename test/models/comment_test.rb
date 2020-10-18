@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  
   def setup
     @user = users(:michael)
     @post = posts(:ants)

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UsersIndexTest < ActionDispatch::IntegrationTest
-
   def setup
     @admin = users(:michael)
     @non_admin = users(:archer)
@@ -16,9 +15,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       assert_select 'a[href=?]', user_path(user), text: user.name
       assert_select 'div.user_profile', text: user.profile
       # confirm delete links are there when logged in as admin
-      unless user == @admin
-        assert_select 'a[href=?]', user_path(user), text: 'delete'
-      end
+      assert_select 'a[href=?]', user_path(user), text: 'delete' unless user == @admin
     end
 
     # delete an user by admin
