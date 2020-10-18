@@ -17,7 +17,6 @@ gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 5.0.0'
 gem 'jquery-rails', '4.3.1'
@@ -39,6 +38,8 @@ gem 'mini_magick', '4.7.0'
 # Use willpaginate for users/posts index
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'will_paginate'
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 4.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
