@@ -1,7 +1,6 @@
 module SessionsHelper
-
   # log in as the passed user
-  def log_in(user) 
+  def log_in(user)
     session[:user_id] = user.id
   end
 
@@ -18,7 +17,7 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user&.authenticated?(cookies[:remember_token])
         log_in user
         @current_user = user
       end
@@ -49,7 +48,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  # redirect to the memorized URL (or the default URL) 
+  # redirect to the memorized URL (or the default URL)
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)

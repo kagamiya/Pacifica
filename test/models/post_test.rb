@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  
   def setup
     @user = users(:michael)
     @post = @user.posts.build(content: "Lorem ipsum")

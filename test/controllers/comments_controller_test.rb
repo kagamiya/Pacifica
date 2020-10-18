@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
-  
   test "should redirect create when not logged in" do
     assert_no_difference 'Comment.count' do
       post comments_path

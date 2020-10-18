@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class LikeTest < ActiveSupport::TestCase
-  
   def setup
     @post = posts(:ants)
     @user = users(:michael)

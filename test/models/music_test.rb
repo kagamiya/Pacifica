@@ -1,10 +1,9 @@
 require 'test_helper'
 
 class MusicTest < ActiveSupport::TestCase
-
   def setup
     @post = posts(:orange)
-    @music = @post.build_music(name: "Harlequin", artist: "Lee ritenour", artwork: "harlequin_artwork", collection_id: "12345")
+    @music = @post.build_music(name: "Harlequin", artist: "Lee ritenour", artwork: "harlequin", collection_id: "12345")
   end
 
   test "should be valid" do

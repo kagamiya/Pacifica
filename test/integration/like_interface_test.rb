@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class LikeInterfaceTest < ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:michael)
     @post = posts(:zone)
@@ -39,7 +38,7 @@ class LikeInterfaceTest < ActionDispatch::IntegrationTest
     get user_likes_path(@user)
     assert_template 'likes/index'
     assert_select 'a[href=?]', post_path(@post), count: 0
-    
+
     # post link should be there after user liked it
     @user.like(@post)
     get user_likes_path(@user)
@@ -50,7 +49,7 @@ class LikeInterfaceTest < ActionDispatch::IntegrationTest
       assert_select 'a[href=?]', user_path(like_post.user)
       assert_select 'a[href=?]', post_path(like_post)
     end
-    
+
     # post link should not be there after user unliked it
     @user.unlike(@post)
     get user_likes_path(@user)

@@ -11,28 +11,27 @@ class User < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   attr_accessor :remember_token
-  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   before_save { email.downcase! }
 
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
-                    format:     { with: VALID_EMAIL_REGEX },
+                    format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validate  :picture_size
   validates :profile, length: { maximum: 140 }
 
-  # return hash value for the passed character string
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+  # return hash value for the given character string
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   # return a random token
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -45,6 +44,7 @@ class User < ApplicationRecord
   # return true when the passed token is equal to digest
   def authenticated?(remember_token)
     return false if remember_digest.nil?
+
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
@@ -93,9 +93,9 @@ class User < ApplicationRecord
 
   private
 
-    def picture_size
-      if picture.size > 5.megabytes
-        error.add(:picture, "should be less than 5MB")
-      end
-    end
+  def picture_size
+    return unless picture.size > 5.megabytes
+
+    error.add(:picture, "should be less than 5MB")
+  end
 end

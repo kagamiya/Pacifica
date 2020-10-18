@@ -1,7 +1,7 @@
 # sample users
-User.create!(name:  "kagamiya",
+User.create!(name: "kagamiya",
              email: "kagamiya@example.com",
-             password:              "foobar",
+             password: "foobar",
              password_confirmation: "foobar",
              profile: Faker::Lorem.sentence(word_count: 15),
              admin: true)
@@ -11,9 +11,9 @@ User.create!(name:  "kagamiya",
   email = "user-#{n+1}@pacifica.com"
   password = "password"
   profile = Faker::Lorem.sentence(word_count: 15)
-  User.create!(name:  name,
+  User.create!(name: name,
                email: email,
-               password:              password,
+               password: password,
                password_confirmation: password,
                profile: profile)
 end
@@ -26,8 +26,8 @@ users = User.order(:created_at).take(6)
   artist = Faker::Music.band
   artwork = 'sample2.png'
   collection_id = Faker::Number.number(digits: 10)
-  users.each do |user| 
-    user.posts.create!(content: content, 
+  users.each do |user|
+    user.posts.create!(content: content,
                        music_attributes: { name: name,
                                            artist: artist,
                                            artwork: artwork,
