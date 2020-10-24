@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  protect_from_forgery except: [:create, :destroy]
   def new; end
 
   def create

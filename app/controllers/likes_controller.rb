@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  protect_from_forgery except: [:create, :destroy]
   before_action :logged_in_user
 
   def index
