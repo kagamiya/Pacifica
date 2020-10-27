@@ -36,7 +36,7 @@
 .DS_Store
 
 # Ignore circleCI configuraiton files
-/.circleci
+# /.circleci
 
 # Ignore rubocop configuration files
 .rubocop.yml

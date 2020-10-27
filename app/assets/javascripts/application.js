@@ -18,7 +18,6 @@
 //= require_tree .
 
 $(function() {
-  
   var
     first_part_url = "https://embed.music.apple.com/us/album/",
     latter_part_url = "?app=music&amp;itsct=music_box&amp;itscg=30200"
@@ -61,9 +60,9 @@ $(function() {
   function search_exec() {
     $.getJSON(search_url, params,
       function(data, status) {
-        // 結果の保存
+        // save rusults
         results_array = data.results;
-        // 結果の表示
+        // show results
         $.each(data.results, function(index, result) {
           build_result(index, result);
         });
@@ -194,5 +193,4 @@ $(function() {
       }
     });
   });
-
 });  
