@@ -85,7 +85,53 @@ jobs:
             bin/rails test  
             bin/rails test:system  
 
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecs: circleci/aws-ecs@1.1.0
+
 workflows:  
   build_and_test:  
     jobs:  
       - test
+  nginx-deploy: # Nginxのデプロイ
+    jobs:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./docker/nginx/Dockerfile
+          repo: pacifica-nginx
+          # tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'pacifica-task' # ECSのタスク定義名
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:788438777855:cluster/pacifica-crus'  #ECSのクラスターのARN
+          service-name: 'pacifica-serv'  #サービス名
+          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+  rails-deploy: # Railsのデプロイ
+    jobs:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./docker/rails/Dockerfile
+          repo: pacifica-app5
+          # tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'pacifica-task' # ECSのタスク定義名
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:788438777855:cluster/pacifica-crus' #ECSのクラスターのARN
+          service-name: 'pacifica-serv' #サービス名
+          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
