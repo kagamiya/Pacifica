@@ -18,7 +18,6 @@
 //= require_tree .
 
 $(function() {
-  
   var
     first_part_url = "https://embed.music.apple.com/us/album/",
     latter_part_url = "?app=music&amp;itsct=music_box&amp;itscg=30200"
@@ -38,32 +37,32 @@ $(function() {
     };
   
   function set_params(attribute, term) {
-    // 検索パラメータのリセット
+    // reset search parameters
     reset_params();
-    // 検索結果のリセット
+    // reset search results
     $('#results').empty();
-    // attributeの設定
+    // set attribute
     params.attribute = attribute;
-    // 検索ワードの設定
+    // set searching keywords
     params.term = term;
-    // 検索の実行
+    // execute searching
     search_exec();
   }
   
-  // パラメータの初期化
+  // initialize parameters
   function reset_params() {
     results_array = [];
     params.term = '';
     params.attribute = '';
   }
 
-  // 検索の実行/JSONファイルの取得
+  // execute searching / get the JSON file
   function search_exec() {
     $.getJSON(search_url, params,
       function(data, status) {
-        // 結果の保存
+        // save rusults
         results_array = data.results;
-        // 結果の表示
+        // show results
         $.each(data.results, function(index, result) {
           build_result(index, result);
         });
@@ -71,26 +70,26 @@ $(function() {
     )
   }
 
-  // 結果を表示
+  // show results
   function build_result(index, result) {
-    // 同じcollectionIdのアルバムを表示しない
+    // do not show the results which have same collection ids
 
-    // 項目のdivタグを追加
+    // append div tags for index of search results
     var item_index = index;
     $('#results').append($('<div>', { id: item_index, class: 'result_item' }));
     
-    // 内容の表示
+    // show content
     var $item_id = $('#' + item_index);
     $item_id.append($('<img>', { src: result.artworkUrl100,   class: 'result_artwork' }));
     $item_id.append($('<p>',   { text: result.artistName,     class: 'result_artist_name' }));
     $item_id.append($('<p>',   { text: result.collectionName, class: 'result_album_name' }));
     $item_id.append($('<p>',   { text: result.trackName,      class: 'result_track_name' }));
 
-    // クリックして埋め込みURLを生成
+    // click to generate an embed URL
     $item_id.click(function () {
       var embed_player_html = generate_html(result.collectionId);
       $('#show_player').html(embed_player_html);
-      // Musicモデルの属性を送信するフォームを生成
+      // generate the form for sending attributes of the Music model
       attr_music(result);
       // show music artist name, album name, and artwork on post create form
       show_heading(result);
@@ -104,7 +103,7 @@ $(function() {
     $('#heading_new').append('<p>Compose your impression about this album!</p>');
   }
 
-  // Musicモデルの属性を送信するフォームを生成
+  // generate the form for sending attributes of the Music model
   function attr_music(result) {
     var $name          = $('#form_name'),
         $artist        = $('#form_artist'),
@@ -130,25 +129,25 @@ $(function() {
                                          value: result.collectionId }));
   }
 
-  // artistフォームで検索
+  // search with the artist form
   $('#artist').keypress(function(e) {
-    // Enterキーが押されたら検索する
+    // execute searching when return
     if (e.which === 13) {
       set_params(attribute_artist, e.target.value);
       return false;
     }
   });
 
-  // albumフォームで検索
+  // search with the album form
   $('#album').keypress(function(e) {
-    // Enterキーが押されたら検索する
+    // execute searching when return
     if (e.which === 13) {
       set_params(attribute_album, e.target.value);
       return false;
     }
   });
 
-  //埋め込みhtmlを生成
+  // generate embed URL
   function generate_html(id) {
     return $('<iframe>',{ src: first_part_url + id + latter_part_url,
                           frameborder: 0,
@@ -194,5 +193,4 @@ $(function() {
       }
     });
   });
-
 });  

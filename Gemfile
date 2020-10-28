@@ -7,8 +7,6 @@ ruby '2.6.5'
 gem 'rails'
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
-# Use Puma as the app server
-gem 'puma', '3.9.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap for layout
@@ -42,11 +40,13 @@ gem 'will_paginate'
 gem 'webpacker', '~> 4.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+group :development, :test do
+  # Use Puma as the app server
+  gem 'puma', '3.9.1'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +54,12 @@ group :development, :test do
 end
 
 group :development do
+  # Deploy application with using capistrano
+  # gem 'capistrano', '~> 3.0.1'
+  # gem 'capistrano-rbenv'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano3-unicorn'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -83,9 +89,10 @@ group :test do
   gem 'webdrivers', '~> 3.0'
 end
 
-group :production do
+group :production, :staging do
   # Use fog to upload image files
   gem 'fog', '1.42'
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
