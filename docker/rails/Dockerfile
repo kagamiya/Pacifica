@@ -16,6 +16,6 @@ RUN gem install bunlder && bundle install -j4 && bundle update
 
 ADD . /app
 
+WORKDIR .
 
 EXPOSE 3000
-
