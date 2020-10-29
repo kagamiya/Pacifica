@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  protect_from_forgery except: [:create, :destroy, :update]
+  # protect_from_forgery except: [:create, :destroy, :update]
   before_action :logged_in_user
   before_action :correct_user, only: [:destroy, :edit, :update]
 
