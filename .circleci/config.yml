@@ -134,4 +134,4 @@ workflows:
           family: 'pacifica-task' # ECSのタスク定義名
           cluster-name: 'arn:aws:ecs:ap-northeast-1:788438777855:cluster/pacifica-crus' #ECSのクラスターのARN
           service-name: 'pacifica-serv' #サービス名
-          container-image-name-updates: "container=pacifica-app,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=pacifica-app5,tag=${CIRCLE_SHA1}"
