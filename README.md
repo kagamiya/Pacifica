@@ -24,7 +24,7 @@ https://pacifica.ml
 - Ruby on Rails 6.0.3.4 (minitestによるテスト, Rubocopによる静的解析)
 - MySQL 5.7
 - Nginx (ウェブサーバー)
-- Unicorn (アプリケーションサーバー)
+- Puma (アプリケーションサーバー)
 - Git / GitHub (Issues, pull requestによる擬似チーム開発)
 - Docker / Docker-compose
 - AWS (ECS, ECR, RDS, VPC, ALB, Route53, ACM, IAM)
