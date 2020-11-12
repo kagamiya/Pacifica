@@ -35,7 +35,7 @@ commands:
 
       - run:  
           name: Bundle Install  
-          command: bundle check --path vendor/bundle || bundle install --deployment  
+          command: bundle config set path 'vendor/bundle' || bundle install --deployment
 
       - save_cache: # キャッシュを保存する  
           key: gem-cache-v1-{{ checksum "Gemfile.lock" }}  
