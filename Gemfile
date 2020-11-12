@@ -42,10 +42,10 @@ gem 'webpacker', '~> 4.0'
 # gem 'mini_magick', '~> 4.8'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# Use Puma as the app server
+gem 'puma', '3.9.1'
 
 group :development, :test do
-  # Use Puma as the app server
-  gem 'puma', '3.9.1'
 end
 
 group :development, :test do
@@ -92,7 +92,6 @@ end
 group :production, :staging do
   # Use fog to upload image files
   gem 'fog', '1.42'
-  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
