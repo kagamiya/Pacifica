@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_112756) do
+ActiveRecord::Schema.define(version: 2020_11_15_202929) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "content"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_112756) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "artist"
-    t.string "artwork"
+    t.string "artwork", default: "sample2.png"
     t.string "collection_id"
     t.index ["post_id"], name: "index_musics_on_post_id"
   end
