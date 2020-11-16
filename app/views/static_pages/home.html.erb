@@ -1,17 +1,4 @@
-<% if logged_in? %>
-  <% provide(:page_wrapper, "main_wrapper") %>
-  <div class="row home">
-    <aside class=col-md-4>
-      <%= render 'shared/aside_user_info', object: current_user %>
-    </aside>
+<% provide(:page_wrapper, "home_wrapper") %>
 
-    <div class="col-md-8">
-      <!-- <%= render 'shared/feed' %> -->
-    </div>
-  </div>
-<% else %>
-  <% provide(:page_wrapper, "home_wrapper") %>
-  
-  <%= render 'home_top' %>
-  <%= render 'home_bottom' %>
-<% end %>
+<%= render 'home_top' %>
+<%= render 'home_bottom' %>
