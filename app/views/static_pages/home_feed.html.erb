@@ -5,7 +5,7 @@
   </aside>
 
   <div class="col-md-8">
-    <% if @feed_items.any? %>
+    <% if @feed_items.present? && current_user.feed.present? %>
     <div class="posts_feed">
       <ol class="posts">
         <%= render @feed_items %>
