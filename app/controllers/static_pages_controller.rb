@@ -7,8 +7,7 @@ class StaticPagesController < ApplicationController
         render 'home_feed_nil'
       else
         @feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
-        # render 'home_feed'
-        render 'B'
+        render 'home_feed'
       end
     end
   end
