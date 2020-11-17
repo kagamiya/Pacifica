@@ -73,6 +73,12 @@ jobs:
           name: Use specific database.yml # CircleCI用のデータベース設定を使う
           command: mv config/database.yml.ci config/database.yml
 
+      - run:
+          name: bundle update before database setup
+          command: |
+            bundle install
+            bundle update
+
       - run:  
           name: Database setup  
           command: |
