@@ -1,6 +1,5 @@
 <li class="post-<%= post.id %> post">
   <%= icon_for(post.user) %>
-  <!-- <img src="<%= @post.music.artwork %>" alt="<%= @post.music.name %>"> -->
   <%= link_to post.user.name, post.user, class: "user" %>
   <a href="<%= post_path(post) %>", class="heading">
     <h2><%= post.music.name %> - <%= post.music.artist %></h2>
