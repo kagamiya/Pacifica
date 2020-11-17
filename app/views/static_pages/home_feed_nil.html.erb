@@ -5,11 +5,9 @@
   </aside>
 
   <div class="col-md-8">
-    <div class="posts_feed">
-      <ol class="posts">
-        <%= render @feed_items %>
-      </ol>
-      <%= will_paginate @feed_items %>
+    <div class="posts_feed feed_empty">
+      <h3>There's nothing to show here...</h3>
+      <p><a href="<%= new_post_path %>">Write a new impression</a> or <a href="<%= users_path %>"> follow the other users</a> !</p>
     </div>
   </div>
 </div>
