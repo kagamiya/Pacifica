@@ -185,6 +185,27 @@ header {
   }
 }
 
+.login_btn {
+  float: left;
+  display: inline-block;
+  margin: 4.5px 0;
+  padding: 8.5px 15px;
+  border: 1px solid;
+  border-color: rgba(127, 0, 255, 0.8);
+  border-radius: 100vh;
+  font-family: 'Moon';
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  color: rgba(127, 0, 255, 0.8);
+  text-decoration: none;
+  &:hover {
+    border-color: rgba(127, 0, 255, 1.0);
+    color: rgba(127, 0, 255, 1.0);
+    text-decoration: none;
+  }
+}
+
 .account_menu {
   @include header_item;
   &:focus {
@@ -474,6 +495,37 @@ aside {
   .user_profile, .edit_link {
     display: none;
   }
+}
+
+@mixin follow_btn {
+  display: inline-block;
+  margin: 0;
+  padding: 8.5px 15px;
+  background-color: $white-smoke;
+  border: 1px solid;
+  border-color: rgba(127, 0, 255, 0.8);
+  border-radius: 100vh;
+  font-family: 'Moon';
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  color: rgba(127, 0, 255, 0.8);
+  text-decoration: none;
+  &:hover {
+    background-color:  rgba(127, 0, 255, 1.0);
+    border-color: rgba(127, 0, 255, 1.0);
+    color: $white-smoke;
+    text-decoration: none;
+  }
+}
+
+.follow_btn {
+  @include follow_btn();
+}
+
+.following_btn {
+  color: $white-smoke;
+  background-color: rgba(127, 0, 255, 0.8);
 }
 
 /* Users index */
