@@ -93,6 +93,9 @@ $(function() {
       attr_music(result);
       // show music artist name, album name, and artwork on post create form
       show_heading(result);
+      // able post form and submit button when an album has been selected
+      $('#post_form').prop("disabled", false);
+      $('#post_btn').prop("disabled", false);
     });
   }
 
@@ -157,6 +160,13 @@ $(function() {
   }
 
   $(document).on('turbolinks:load', function() {
+    // scrollbar for search results
+    $('#results').mCustomScrollbar();
+
+    // disable post form and submit button untill an album is selected
+    $("#post_form").prop("disabled", true);
+    $("#post_btn").prop("disabled", true);
+
     // like button popup
     $('#like_form').hover(
       function() {
@@ -167,9 +177,6 @@ $(function() {
       }
     );
 
-    // scrollbar for search results
-    $('#results').mCustomScrollbar();
-  
     // back-to-top button
     $('#back_to_top').click(function() {
       $('html, body').animate({ 'scrollTop': 0 }, 'slow');
