@@ -8,10 +8,12 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="wrapper <%= yield(:page_wrapper) %>">
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, class: "alert alert-#{message_type}") do %>
+          <%= content_tag(:div, message, class: "container") %>
         <% end %>
+      <% end %>
+      <div class="container">
         <%= yield %>
       </div>
     </div>
