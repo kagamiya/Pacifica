@@ -2,15 +2,17 @@
 <% provide(:page_wrapper, "post_edit_wrapper") %>
 <% provide(:url, post_path) %>
 <% provide(:button_text, "Save") %>
-<div class="row">
-  <aside class=col-md-4>
-    <%= render 'shared/aside_user_info', object: @post.user %>
-    <span class="aside_music_player">
-      <%= player_for(@post.music.collection_id) %>
-    </span>
-  </aside>
-
-  <div class="post-<%= @post.id %> col-md-8">
-    <%= render 'post_detail' %>
+<div class="container">
+  <div class="row">
+    <aside class=col-md-4>
+      <%= render 'shared/aside_user_info', object: @post.user %>
+      <span class="aside_music_player">
+        <%= player_for(@post.music.collection_id) %>
+      </span>
+    </aside>
+  
+    <div class="post-<%= @post.id %> col-md-8">
+      <%= render 'post_detail' %>
+    </div>
   </div>
 </div>

@@ -3,35 +3,36 @@
 <% provide(:url, posts_new_path) %>
 <% provide(:placeholder, "Compose new post") %>
 <% provide(:button_text, "Post") %>
-
-<div class="row">
-  <div class="col-md-4">
-    <%= render 'music_search' %>
-  </div>
-
-  <div class="col-md-8">
-    <div class="post_new">
-      <div class="post_form">
-        <div id="heading_new" class="heading heading_new">
-          <h3>STEP3 - WRITE</h3>
-          <p>Please search and select an album before writing impression.</p>
-        </div>
-
-        <%= form_for(@post, url: yield(:url)) do |f| %>
-          <div class="music_form">
-            <%= f.fields_for :music do |m| %>
-              <span id="form_name"          class="field"></span>
-              <span id="form_artist"        class="field"></span>
-              <span id="form_artwork"       class="field"></span>
-              <span id="form_collection_id" class="field"></span>
-            <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render 'music_search' %>
+    </div>
+  
+    <div class="col-md-8">
+      <div class="post_new">
+        <div class="post_form">
+          <div id="heading_new" class="heading heading_new">
+            <h3>STEP3 - WRITE</h3>
+            <p>Please search and select an album before writing impression.</p>
           </div>
-    
-          <%= render 'shared/error_messages', object: f.object %>
-          <%= f.text_area :content, placeholder: yield(:placeholder), class:"form-control", id: "post_form" %>
-    
-          <%= f.submit yield(:button_text), class: "btn btn-primary", id: "post_btn" %>
-        <% end %>
+  
+          <%= form_for(@post, url: yield(:url)) do |f| %>
+            <div class="music_form">
+              <%= f.fields_for :music do |m| %>
+                <span id="form_name"          class="field"></span>
+                <span id="form_artist"        class="field"></span>
+                <span id="form_artwork"       class="field"></span>
+                <span id="form_collection_id" class="field"></span>
+              <% end %>
+            </div>
+      
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.text_area :content, placeholder: yield(:placeholder), class:"form-control", id: "post_form" %>
+      
+            <%= f.submit yield(:button_text), class: "btn btn-primary", id: "post_btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

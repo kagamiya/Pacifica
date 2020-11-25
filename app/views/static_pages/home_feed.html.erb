@@ -1,17 +1,19 @@
 <% provide(:page_wrapper, "main_wrapper") %>
-<div class="row home">
-  <aside class=col-md-4>
-    <%= render 'shared/aside_user_info', object: current_user %>
-  </aside>
-
-  <div class="col-md-8">
-    <% if @feed_items.present? && current_user.feed.present? %>
-    <div class="posts_feed">
-      <ol class="posts">
-        <%= render @feed_items %>
-      </ol>
-      <%= will_paginate @feed_items %>
+<div class="container">
+  <div class="row home">
+    <aside class=col-md-4>
+      <%= render 'shared/aside_user_info', object: current_user %>
+    </aside>
+  
+    <div class="col-md-8">
+      <% if @feed_items.present? && current_user.feed.present? %>
+      <div class="posts_feed">
+        <ol class="posts">
+          <%= render @feed_items %>
+        </ol>
+        <%= will_paginate @feed_items %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>

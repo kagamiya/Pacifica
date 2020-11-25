@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     unless logged_in?
+      @latest_posts = Post.last(3)
       render 'home'
     else
       if current_user.feed.blank?

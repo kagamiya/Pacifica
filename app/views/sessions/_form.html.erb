@@ -14,7 +14,7 @@
 <%= f.submit "Log In", class: "btn btn-info" %>
 <% end %>
 
-<p>Are you new to this site? <%= link_to "Sign up", signup_path %></p>
+<p>Are you new to this site? <%= link_to "Sign up", signup_path %> or <%= link_to "Log in as a test user", login_path(session: { email: "user-1@pacifica.com", password: "password" }), method: "post" %></p>
 
 <!-- test user info -->
 <p style="color: red;">Test user email: user-1@pacifica.com</p>

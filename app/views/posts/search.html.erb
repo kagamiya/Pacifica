@@ -1,10 +1,11 @@
 <% provide(:title, 'Search results') %>
 <% provide(:page_wrapper, 'post_search_wrapper') %>
-
-<div class="searched_posts_index">
-  <h1><%= @searched_posts.count %> posts found</h1>
-  <ul class="posts">
-    <%= render @searched_posts %>
-  </ul>
-  <%= will_paginate @searched_posts %>
+<div class="container">
+  <div class="searched_posts_index">
+    <h1><%= @searched_posts.count %> posts found</h1>
+    <ul class="posts">
+      <%= render @searched_posts %>
+    </ul>
+    <%= will_paginate @searched_posts %>
+  </div>
 </div>

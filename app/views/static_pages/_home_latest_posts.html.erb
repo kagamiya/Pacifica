@@ -1,0 +1,31 @@
+<div class="home_latest_posts">
+  <div class="container">
+    <div class="row">
+      <h1>Latest Impressions</h1>
+      <% @latest_posts.each do |post| %>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <%= image_tag post.music.artwork %>        
+            <h5 class="card-title"><%= post.music.name %></h5>
+            <p class="card-text"><%= post.content %></p>
+          </div>
+          <div class="timestamp">
+            <%= icon_for(post.user) %>
+            <p><small class="text-muted">Posted by<br/>
+              <%= link_to post.user.name, post.user %></small></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="col-md-3">
+        <div class="item_desc">
+          <p >You want to see more impressions?</p>
+          <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary home_btn" %>
+          <p>or</p>
+          <%= link_to "Log in as test user", login_path(session: { email: "user-1@pacifica.com", password: "password" }), method: "post", class: "btn btn-lg btn-success home_btn" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
