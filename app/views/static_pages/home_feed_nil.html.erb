@@ -1,18 +1,20 @@
 <% provide(:page_wrapper, "main_wrapper") %>
-<div class="row home">
-  <aside class=col-md-4>
-    <%= render 'shared/aside_user_info', object: current_user %>
-  </aside>
-
-  <div class="col-md-8">
-    <div class="posts_feed feed_empty">
-      <h3>There's nothing to show here...</h3>
-      <p>
-        <%= link_to  "Share a new impression", new_post_path, data: { "turbolinks" => false } %>
-        or 
-        <%= link_to "follow the other users", users_path %>
-        !
-      </p>
+<div class="container">
+  <div class="row home">
+    <aside class=col-md-4>
+      <%= render 'shared/aside_user_info', object: current_user %>
+    </aside>
+  
+    <div class="col-md-8">
+      <div class="posts_feed feed_empty">
+        <h3>There's nothing to show here...</h3>
+        <p>
+          <%= link_to  "Share a new impression", new_post_path, data: { "turbolinks" => false } %>
+          or 
+          <%= link_to "follow the other users", users_path %>
+          !
+        </p>
+      </div>
     </div>
   </div>
 </div>

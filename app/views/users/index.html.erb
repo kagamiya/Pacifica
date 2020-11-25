@@ -1,11 +1,12 @@
 <% provide(:title, 'All users') %>
 <% provide(:page_wrapper, 'users_wrapper') %>
-
-<div class="users_index">
-  <h1>All users</h1>
-  <%= will_paginate %>
-  <ul class="users">
-    <%= render @users %>
-  </ul>
-  <%= will_paginate %>
+<div class="container">
+  <div class="users_index">
+    <h1>All users</h1>
+    <%= will_paginate %>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
+    <%= will_paginate %>
+  </div>
 </div>

@@ -1,21 +1,23 @@
 <% provide(:title, "#{@post.user.name} / #{@post.music.name} - #{@post.music.artist}") %>
 <% provide(:page_wrapper, "post_show_wrapper") %>
-<div class="row">
-  <aside class=col-md-4>
-    <%= render 'shared/aside_user_info', object: @post.user %>
-    <span class="aside_music_player">
-      <%= player_for(@post.music.collection_id) %>
-    </span>
-  </aside>
-  
-  <div class="post-<%= @post.id %> col-md-8">   
-    <%= render 'post_detail' %>
-    <div class="post_comments">
-      <h3>Comment (<%= @post.comments.count %>)</h3>
-      <%= render 'comments/comment_form' %>
-      <ul class="comments">
-        <%= render @comments %>
-      </ul>
+<div class="container">
+  <div class="row">
+    <aside class=col-md-4>
+      <%= render 'shared/aside_user_info', object: @post.user %>
+      <span class="aside_music_player">
+        <%= player_for(@post.music.collection_id) %>
+      </span>
+    </aside>
+    
+    <div class="post-<%= @post.id %> col-md-8">   
+      <%= render 'post_detail' %>
+      <div class="post_comments">
+        <h3>Comment (<%= @post.comments.count %>)</h3>
+        <%= render 'comments/comment_form' %>
+        <ul class="comments">
+          <%= render @comments %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -101,13 +101,18 @@ $bg6: url('/images/bg6.jpeg');
 $bg7: url('/images/bg7.jpeg');
 $bg8: url('/images/bg8.jpeg');
 $bg9: url('/images/bg9.jpeg');
+$bg10: url('/images/bg10.jpeg');
 
 @mixin bg_img($bg, $size) {
   background-image: $bg;
   background-size: $size;
 }
 
-.home_wrapper, .user_form_wrapper {
+.home_wrapper {
+  @include bg_img($bg10, auto);
+}
+
+.user_form_wrapper {
   @include bg_img($bg2, cover);
 }
 
@@ -293,38 +298,94 @@ footer {
 /* home */
 
 .home_top {
-  padding: 70px 0 200px 0;
+  padding: 70px 0 120px 0;
+  text-align: center;
+  color: $white-smoke;
   .heading {
-    h1 {
-      color: $white-smoke;
-      text-align: left;
-    }
     p {
-      color: $white-smoke;
       font-size: 22px;
     }
   }
 }
 
 .home_btns {
-  overflow: hidden;
   margin-top: 50px;
-  a {
-    float: left;
-  }
+  font-size: 16px;
   p {
-    float: left;
     margin: 0 15px;
     line-height: 44px;
     color: white;
   }
 }
 
-.home_bottom {
-  background-color: rgba(224, 224, 224, 0.9);
-  padding: 20px;
+.home_btn {
+  border-radius: 100vh;
+}
+
+.home_feature {
+  height: auto;
+  background-color: #404040;
+  color: $white-smoke;
+  padding: 20px 0;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+}
+
+.home_latest_posts {
+  height: auto;
+  padding-bottom: 20px;
+  background-color: #5f5f5f;
+  color: $white-smoke;
+  border-top: 1px solid $gray;
+  // border-bottom: 1px solid $gray;
+  h1 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .card {
+    overflow: hidden;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: $white-smoke;
+    color: $dark-gray;
+    border-radius: 5px;
+    p {
+      margin: 0;
+    }
+    .card-body {
+      overflow: hidden;
+      height: auto;
+      text-align: center;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $gray;
+      img {
+        height: 100px;
+      }
+      .card-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        text-align: left;
+      }
+    }
+    .timestamp {
+      padding-top: 5px;
+      img {
+        float: left;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+  }
+  .item_desc {
+    text-align: center;
+    p {
+      margin: 10px 0;
+    }
+  }
 }
 
 .slides {
@@ -501,6 +562,7 @@ aside {
 
 @mixin follow_btn {
   display: inline-block;
+  width: 100px;
   margin: 0;
   padding: 8.5px 15px;
   background-color: $white-smoke;
