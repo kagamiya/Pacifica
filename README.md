@@ -31,7 +31,7 @@ https://pacifica.ml
 - CircleCI (CI/CDパイプライン構築による自動テスト, 自動ビルド, 自動デプロイ)
 
 ### インフラ構成図
-![pacifica-structure](https://user-images.githubusercontent.com/55893072/97518910-8ed83b80-19db-11eb-99d5-b451292bbc29.jpg)
+![image](https://user-images.githubusercontent.com/55893072/100296464-9f2a0900-2fcf-11eb-9bf7-26db7a370870.png)
 
 ## 主要機能
 - ログイン関連
