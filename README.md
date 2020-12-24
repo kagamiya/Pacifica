@@ -25,7 +25,7 @@ https://pacifica.ml
 - MySQL 5.7
 - Nginx (ウェブサーバー)
 - Puma (アプリケーションサーバー)
-- Git / GitHub (Issues, pull requestによる擬似チーム開発)
+- Git / GitHub (Issues, pull request)
 - Docker / Docker-compose
 - AWS (ECS, ECR, RDS, VPC, ALB, Route53, ACM, IAM)
 - CircleCI (CI/CDパイプライン構築による自動テスト, 自動ビルド, 自動デプロイ)
